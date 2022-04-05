@@ -23,11 +23,15 @@
     <span>https://twitter.com/depi_army</span>
     <button type="submit">Follow</button>
 </form>
-
-<br><br><br>
-
+<br>
 <p>Join Our Discord Server: <a href="/discord">Join Now</a></p>
-
+<br>
+<form action="tweet" method="post">
+    @csrf
+    <p>Join My Brigade {{ $user->share_link }}</p>
+    <button type="submit">Tweet</button>
+</form>
+<br>
 <p>Rank: {{ $user->rank }}</p>
 <p>Score: {{ $user->score }}</p>
 

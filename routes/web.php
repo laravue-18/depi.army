@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function(){
     Route::get('discord', [UserController::class, 'redirectDiscord']);
     Route::get('/auth/callback/discord',  [UserController::class, 'callbackDiscord']);
 
+    Route::post('tweet', [UserController::class, 'tweet']);
+
     Route::get('{username}', [UserController::class, 'profile']);
 });
 

@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function login(){
         return Socialite::driver('twitter-oauth-2')
-            ->scopes(['follows.write'])
+            ->scopes(['follows.write', 'tweet.write'])
             ->redirect();
     }
 
@@ -100,6 +100,16 @@ class UserController extends Controller
 
     public function profile(){
         return view('profile');
+    }
+
+    public function tweet(Request $request){
+        $user = auth()->user();
+        $response = Http::withToken($user->provider_token)
+            ->post("https://api.twitter.com/2/tweets/", [
+                "text" => "Join My Brigade https://depi.army/" . $user->username,
+            ]);
+        $request->session()->flash("following", $response->json('data.following'));
+        return redirect()->back();
     }
 
     public function logout(){

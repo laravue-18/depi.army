@@ -38,7 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['rank', 'score'];
+    protected $appends = ['rank', 'score', 'share_link'];
 
     public function getScoreAttribute(){
         return 2000;
@@ -46,5 +46,9 @@ class User extends Authenticatable
 
     public function getRankAttribute(){
         return 'general';
+    }
+
+    public function getShareLinkAttribute(){
+        return url(auth()->user()->username);
     }
 }
