@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
+    public function welcome(Request $request){
+        if($request->has('ref')){
+            session(['referrer' => $request->query('ref')]);
+        }
+
+        return view('welcome');
+    }
+
     public function enlist(Request $request){
         $request->validate([
             'wallet_id' => 'required'
@@ -46,6 +54,8 @@ class UserController extends Controller
                     'provider_refresh_token' => $twitterUser->refreshToken,
                 ]);
             } else if(session('wallet_id')) {
+                $referrer = User::whereUsername(session()->pull('referrer'))->first();
+
                 $user = User::create([
                     'name' => $twitterUser->name,
                     'username' => $twitterUser->nickname,
@@ -55,6 +65,7 @@ class UserController extends Controller
                     'provider_id' => $twitterUser->id,
                     'provider_token' => $twitterUser->token,
                     'provider_refresh_token' => $twitterUser->refreshToken,
+                    'referrer_id' => $referrer ? $referrer->id : null,
                 ]);
             } else{
                 Session::flash('notRegistered', true);

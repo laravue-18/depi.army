@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'image', 'provider', 'provider_id', 'provider_token', 'provider_refresh_token', 'password', 'wallet_id'
+        'name', 'username', 'email', 'image', 'provider', 'provider_id', 'provider_token', 'provider_refresh_token', 'password', 'wallet_id', 'referrer_id'
     ];
 
     /**
@@ -38,7 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['rank', 'score', 'share_link'];
+    protected $appends = ['rank', 'score', 'share_link', 'referral_link'];
 
     public function getScoreAttribute(){
         return 2000;
@@ -50,5 +50,20 @@ class User extends Authenticatable
 
     public function getShareLinkAttribute(){
         return url(auth()->user()->username);
+    }
+
+    public function getReferralLinkAttribute()
+    {
+        return $this->referral_link = route('welcome', ['ref' => $this->username]);
+    }
+
+    public function referrer()
+    {
+        return $this->belongsTo(User::class, 'referrer_id', 'id');
+    }
+
+    public function referrals()
+    {
+        return $this->hasMany(User::class, 'referrer_id', 'id');
     }
 }
