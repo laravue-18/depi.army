@@ -25,13 +25,13 @@ class UserController extends Controller
         ]);
         session(['wallet_id' => $request['wallet_id']]);
         return Socialite::driver('twitter-oauth-2')
-                ->scopes(['users.read', 'tweet.read', 'follows.write', 'offline.access'])
+                ->scopes(['follows.read', 'follows.write', 'tweet.write'])
                 ->redirect();
     }
 
     public function login(){
         return Socialite::driver('twitter-oauth-2')
-            ->scopes(['follows.write', 'tweet.write'])
+            ->scopes(['follows.read', 'follows.write', 'tweet.write'])
             ->redirect();
     }
 
@@ -85,10 +85,16 @@ class UserController extends Controller
         $discordUser = Socialite::driver('discord')->user();
 
         $response = Http::withHeaders([
-            "Authorization" => "Bot OTYwNTQzNDYxNjAwMjk3MDMw.Ykr9zw.TrJwUyqcuBZPSRpXgEIg4PmxmwU",
+            "Authorization" => "Bot " . env("DISCORD_BOT_TOKEN"),
             "Content-Type" => "application/json",
-        ])->put("https://discordapp.com/api/guilds/960618005463715860/members/" . $discordUser->id, [
+        ])->put("https://discordapp.com/api/guilds/" . env("DISCORD_SERVER_ID") . "/members/" . $discordUser->id, [
             "access_token" => $discordUser->token
+        ]);
+
+        auth()->user()->update([
+            'discord_id' => $discordUser->id,
+            'discord_token' => $discordUser->token,
+            'discord_refresh_token' => $discordUser->refreshToken,
         ]);
 
         return redirect('/home');
@@ -117,9 +123,16 @@ class UserController extends Controller
         $user = auth()->user();
         $response = Http::withToken($user->provider_token)
             ->post("https://api.twitter.com/2/tweets/", [
-                "text" => "Join My Brigade https://depi.army/" . $user->username,
-            ]);
-        $request->session()->flash("following", $response->json('data.following'));
+                "text" => "Join My Brigade " . $user['referral_link'],
+            ])
+            ->json();
+        if(isset($response['detail'])){
+            $request->session()->flash("error", $response['detail']);
+        }
+        if(isset($response['data']['id'])){
+            auth()->user()->update(['tweet_id' => $response['data']['id']]);
+        }
+
         return redirect()->back();
     }
 

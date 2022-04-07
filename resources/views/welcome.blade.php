@@ -11,7 +11,7 @@
 <a href="login">Login</a>
 <form action="enlist" method="post">
     @csrf
-    <input type="text" name="wallet_id">
+    <input type="text" name="wallet_id" required>
     <button type="submit">Join the dePi Army!</button>
 </form>
 @if(Session::has('notRegistered'))

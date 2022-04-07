@@ -34,6 +34,24 @@
 <br>
 <p>Rank: {{ $user->rank }}</p>
 <p>Score: {{ $user->score }}</p>
+<br>
+<b>My Brigade</b>
+<p>General: {{ $user->countOfRankInBrigade('General') }}</p>
+<p>Colonel: {{ $user->countOfRankInBrigade('Colonel') }}</p>
+<p>Major: {{ $user->countOfRankInBrigade('Major') }}</p>
+<p>Captain: {{ $user->countOfRankInBrigade('Captain') }}</p>
+<p>Lieutenant: {{ $user->countOfRankInBrigade('Lieutenant') }}</p>
+<p>Unactivated: {{ $user->countOfRankInBrigade('Unactivated') }}</p>
+<br>
+<b>Depi Tweets</b>
+<p>Retweet: {{ $user->countOfRetweetOfDepiArmy() }}</p>
+<p>Reply: {{ $user->countOfReplyOfDepiArmy() }}</p>
+<p>Like: {{ $user->countOfLikeOfDepiArmy() }}</p>
+
+<b>Your Tweets</b>
+<p>Retweet: {{ $user->countsOfMyTweets()['retweet_count'] }}</p>
+<p>Reply: {{ $user->countsOfMyTweets()['reply_count'] }}</p>
+<p>Like: {{ $user->countsOfMyTweets()['like_count'] }}</p>
 
 <form action="logout" method="post">
     @csrf
