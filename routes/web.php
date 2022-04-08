@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Artisan;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('cmd', function(){
+    $exitCode = Artisan::call('migrate');
+    dd($exitCode);
+});
 
 
 Route::middleware('guest')->group(function(){
@@ -42,7 +46,3 @@ Route::middleware('auth')->group(function(){
 });
 
 
-Route::get('cmd', function(){
-    $exitCode = Artisan::call('migrate');
-    dd($exitCode);
-});
