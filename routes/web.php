@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,7 @@ Route::middleware('auth')->group(function(){
 });
 
 
-
+Route::get('cmd', function(){
+    $exitCode = Artisan::call('migrate');
+    dd($exitCode);
+});
