@@ -16,7 +16,19 @@ class UserController extends Controller
             session(['referrer' => $request->query('ref')]);
         }
 
-        return view('welcome');
+        return view('guest.welcome');
+    }
+
+    public function mission(Request $request){
+        return view('guest.mission');
+    }
+
+    public function ourteam(Request $request){
+        return view('guest.ourteam');
+    }
+
+    public function roadmap(Request $request){
+        return view('guest.roadmap');
     }
 
     public function enlist(Request $request){

@@ -17,6 +17,10 @@ use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function(){
     Route::get('/', [UserController::class, 'welcome'])->name('welcome');
+    Route::get('/mission', [UserController::class, 'mission']);
+    Route::get('/ourteam', [UserController::class, 'ourteam']);
+    Route::get('/roadmap', [UserController::class, 'roadmap']);
+
     Route::post('enlist', [UserController::class, 'enlist']);
     Route::get('login', [UserController::class, 'login'])->name('login');
 });

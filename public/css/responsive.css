@@ -1,50 +1,31 @@
 @media all and (max-width: 992px) {
   /* header section */
   .header-section {
-    padding: 20px 0;
-    background-color: #13131E;
+    padding: 23px 0;
   }
 
   .logo svg {
-    width: 50px;
+    width: 61px;
   }
 
   .desktop-nav {
     display: none !important;
   }
 
-  .hand-burger {
-    display: flex;
-  }
-  .hand-burger span {
-    transition: all 0.3s;
-  }
-  .hand-burger.active span:first-of-type {
-    transform: rotate(45deg) translate(6px, 4px);
-  }
-  .hand-burger.active span:nth-of-type(2) {
-    opacity: 0;
-  }
-  .hand-burger.active span:last-of-type {
-    transform: rotate(-45deg) translate(7px, -5px);
-  }
-
-  .mobile-bar.active {
+  .hamburger-menu {
     display: block;
   }
 
-  .mobile-nav a {
-    transition: all 0.3s;
+  .mobile-menu {
+    gap: 2rem;
   }
-  .mobile-nav a:hover {
-    color: #00DEFC;
+  .mobile-menu a {
+    font-size: 20px;
   }
 
-  .mobile-social a svg path {
-    transition: all 0.3s;
-  }
-  .mobile-social a:hover svg path {
-    fill: #00DEFC;
+  .social-icon-mobile svg {
+    height: 20px;
+    width: 20px;
   }
 
   /* banner section */
@@ -54,32 +35,40 @@
   .banner-content h2 {
     font-size: 50px;
     line-height: normal;
-    height: auto;
-    height: 120px;
+    height: 180px;
+  }
+  .banner-content h2 span {
+    display: block;
+    transform: translateY(50px);
   }
   .banner-content h2 p {
     font-size: 50px;
   }
   .banner-content p {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   /* join section */
+  .join-section {
+    padding: 60px 0;
+  }
+
   .join-left {
     margin-bottom: 2rem;
   }
   .join-left p {
-    font-size: 12px;
+    font-size: 20px;
+    text-align: center;
   }
 
   .join-right {
     justify-content: center !important;
   }
   .join-right a {
-    width: 186px;
-    height: 40px;
+    width: 287.5px;
+    height: 67.47px;
     font-size: 12px;
-    line-height: 40px;
+    line-height: 67.47px;
   }
 
   .join-overlay {
@@ -90,22 +79,39 @@
   }
 
   /* qr section */
+  .qr-section {
+    padding: 100px 0;
+  }
+
   .qr-left {
     padding-bottom: 3rem;
   }
   .qr-left h2 {
-    font-size: 24px;
+    font-size: 40px;
     padding-bottom: 8px;
   }
   .qr-left p {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .qr-scanner-box {
     margin-left: 0;
+    width: 100%;
   }
   .qr-scanner-box img {
     width: 100%;
+  }
+
+  .qr-scanner {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .qr-scanner img {
+    width: 400px;
+  }
+
+  .qr-img {
+    width: 321.64px !important;
   }
 
   .qr-list {
@@ -131,9 +137,27 @@
     top: 0;
   }
 
-  /* art content section */
-  .mobile-d-none {
+  .qr-status {
+    overflow-x: scroll;
+    margin-top: 3rem;
+  }
+  .qr-status::-webkit-scrollbar {
     display: none;
+  }
+  .qr-status .qr-status-scroll {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    gap: 2rem;
+  }
+  .qr-status .qr-status-scroll .qr-list {
+    height: 80px;
+    padding: 24px 50px;
+  }
+
+  /* art content section */
+  .art-img img {
+    width: 100%;
   }
 
   .art-content {
@@ -160,9 +184,22 @@
     width: 30px;
   }
 
+  .art-content-anim h2 {
+    font-size: 40px;
+  }
+
+  .art-content p:first-of-type {
+    font-size: 16px;
+    line-height: 190%;
+  }
+
+  .art-circle {
+    display: none;
+  }
+
   /* nft section */
   .nft-right-content {
-    margin-top: 3rem;
+    margin-bottom: 4rem;
   }
   .nft-right-content h2 {
     font-size: 24px;
@@ -174,18 +211,18 @@
 
   /* info card section */
   .info-card {
-    height: auto;
+    height: 461.32px;
     margin-bottom: 3rem;
   }
   .info-card img {
-    width: 30px;
+    width: 50px;
   }
   .info-card h4 {
-    font-size: 18px;
+    font-size: 24px;
     padding: 1rem 0;
   }
   .info-card p {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .info-card-dot {
@@ -198,32 +235,45 @@
 
   /* contact section */
   .contact-info h2 {
-    font-size: 30px;
+    font-size: 48px;
+    margin-bottom: 1rem;
   }
   .contact-info p {
-    font-size: 12px !important;
-    line-height: normal !important;
+    font-size: 18px !important;
+    line-height: 170% !important;
   }
   .contact-info p:first-of-type {
     padding: 10px 0;
+    margin-bottom: 1rem;
   }
 
   .contact-form {
     margin-top: 2rem;
-    padding: 10px;
+    padding: 40px 30px;
   }
-  .contact-form h4 {
-    font-size: 12px !important;
+  .contact-form div {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .contact-form h4:first-of-type {
+    font-size: 36px !important;
+    margin-bottom: 1rem;
+  }
+  .contact-form h4:last-of-type {
+    font-size: 18px !important;
   }
 
+  .form-input {
+    margin-bottom: 2rem;
+  }
   .form-input input {
-    height: 45px;
+    height: 67px;
     font-size: 12px;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
 
   .contact-form button {
-    height: 45px;
+    height: 67px;
     font-size: 12px;
   }
 
@@ -232,10 +282,15 @@
   }
 
   /* footer section */
+  .footer-logo img {
+    width: 54px;
+    margin-bottom: 2rem;
+  }
   .footer-logo ul {
     gap: 10px;
     flex-direction: column;
     align-items: unset !important;
+    display: none;
   }
   .footer-logo ul li {
     font-size: 12px;
@@ -245,24 +300,28 @@
 
   .footer-nav {
     margin-top: 1rem;
-    gap: 10px;
+    gap: 2rem;
     flex-direction: column;
     align-items: unset !important;
   }
   .footer-nav a {
-    font-size: 12px;
+    font-size: 20px;
   }
 
   .footer-social {
     justify-content: flex-start;
   }
   .footer-social a svg {
-    height: 14px;
-    width: 14px;
+    height: 24px;
+    width: 24px;
   }
 
   .footer-section {
     padding-bottom: 50px;
+  }
+
+  .footer-mobile-link {
+    display: block;
   }
 
   /* missing banner section */
@@ -344,12 +403,15 @@
   .contact-form p {
     font-size: 12px;
   }
+
+  .land-back {
+    display: none;
+  }
 }
 @media (min-width: 451px) and (max-width: 768px) {
   /* header section */
   .header-section {
     padding: 20px 0;
-    background-color: #13131E;
   }
 
   .logo svg {
@@ -433,5 +495,9 @@
   }
   .timeline-right::after {
     left: -2.5rem;
+  }
+
+  .land-back {
+    display: none;
   }
 }/*# sourceMappingURL=responsive.css.map */

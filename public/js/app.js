@@ -22,22 +22,44 @@ const init = () => {
         });
 
     // qr scanner animation
-    const qr = gsap.to(".qr-scanner", {
-        y: 300,
-        repeat: -1,
-        duration: 1,
-        yoyo: true,
-    });
+    const qrScanner = document.querySelector(".qr-scanner-box");
 
-    const qrScanner = document.querySelector(".qr-right");
-    if (qrScanner) {
-        qrScanner.addEventListener("mouseover", () => {
-            qr.pause();
+    if (window.innerWidth > 450) {
+        const qr = gsap.to(".qr-scanner", {
+            y: 300,
+            repeat: -1,
+            duration: 1,
+            yoyo: true,
         });
 
-        qrScanner.addEventListener("mouseleave", () => {
-            qr.play();
+        const qrImg = qrScanner.parentElement.querySelector(".qr-img");
+
+        if (qrScanner) {
+            qrImg.addEventListener("mouseover", () => {
+                qr.pause();
+            });
+
+            qrImg.addEventListener("mouseleave", () => {
+                qr.play();
+            });
+        }
+    } else {
+        const qr = gsap.to(".qr-scanner", {
+            y: 200,
+            repeat: -1,
+            duration: 1,
+            yoyo: true,
         });
+
+        if (qrScanner) {
+            qrScanner.addEventListener("mouseover", () => {
+                qr.pause();
+            });
+
+            qrScanner.addEventListener("mouseleave", () => {
+                qr.play();
+            });
+        }
     }
 
     const dotTimeline = gsap.timeline();
@@ -81,8 +103,8 @@ const init = () => {
     const bannerTimeline = gsap.timeline();
 
     bannerTimeline.from(".banner-section", {
-        "background-position": "150px -150px",
-        duration: 10,
+        "background-position": "150px 0",
+        duration: 18,
         yoyo: true,
         repeat: -1,
     });
@@ -130,46 +152,18 @@ window.onload = () => {
     init();
 };
 
-// input dropdown
-const formSelectBtn = document.querySelector(".form-select-btn");
-const selectOption = document.querySelector(".select-option");
-const inputOption = document.querySelectorAll(".select-option a");
-const inputBox = document.querySelector(".select-input");
-
-formSelectBtn.addEventListener("click", () => {
-    if (selectOption.classList.contains("active")) {
-        selectOption.classList.remove("active");
-    } else {
-        selectOption.classList.add("active");
-    }
-});
-
-inputOption[0].classList.add("selected");
-
-inputOption.forEach((e) => {
-    e.addEventListener("click", () => {
-        if (!e.classList.contains("selected")) {
-            inputOption.forEach((elem) => {
-                elem.classList.remove("selected");
-            });
-            e.classList.add("selected");
-            formSelectBtn
-                .querySelector("i")
-                .setAttribute("class", e.getAttribute("data-icon"));
-            inputBox.setAttribute("placeholder", e.getAttribute("data-info"));
-        }
-    });
-});
-
-window.onclick = (e) => {
-    if (!e.target.classList.contains("form-select-btn")) {
-        selectOption.classList.remove("active");
-    }
-};
-
 const circle = document.querySelectorAll(".rm-circle");
+if (circle.length !== 0) {
+    circle[0].style.background =
+        "linear-gradient(276.23deg, #00DEFC -45.14%, #BAFFD1 89.24%)";
+    circle[1].style.background =
+        "linear-gradient(276.23deg, #00DEFC -45.14%, #BAFFD1 89.24%)";
+}
 
-circle[0].style.background =
-    "linear-gradient(276.23deg, #00DEFC -45.14%, #BAFFD1 89.24%)";
-circle[1].style.background =
-    "linear-gradient(276.23deg, #00DEFC -45.14%, #BAFFD1 89.24%)";
+let hamburgerMenu = document.querySelector(".hamburger-menu");
+let mobileMenu = document.querySelector(".mobile-menu-box");
+
+hamburgerMenu.addEventListener("click", (e) => {
+    hamburgerMenu.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+});

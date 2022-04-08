@@ -16,6 +16,11 @@ body {
   position: relative;
 }
 
+body,
+html {
+  overflow-x: hidden;
+}
+
 /* bootstrap 4 class modifyed */
 .container {
   max-width: 1212px;
@@ -54,12 +59,12 @@ a:hover {
   padding: 50px 0;
   transition: all 0.3s;
   background-color: transparent;
+  z-index: 99999;
 }
-
 .header-section.sticky {
   position: fixed;
   background-color: #13131E;
-  padding: 20px 0;
+  padding: 23px 0;
 }
 
 .navigation-bar {
@@ -94,64 +99,13 @@ a:hover {
   fill: #00DEFC;
 }
 
-.hand-burger {
-  height: 18px;
-  width: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  margin-left: auto;
-}
-.hand-burger span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background-color: #fff;
-}
-
-.hand-burger {
-  display: none;
-}
-
-.mobile-bar {
-  position: fixed;
-  background-color: #13131E;
-  inset: 74px 0 0 0;
-  z-index: 9999;
-  padding: 1rem;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s;
-}
-.mobile-bar.active {
-  visibility: visible;
-  opacity: 1;
-}
-
-.mobile-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.mobile-nav a {
-  color: #fff;
-}
-
-.mobile-social {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
 .login-btn {
   height: 44px;
   width: 121.92px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(129deg, #badaff 45%, #00defc 98%);
+  background-image: linear-gradient(129deg, rgb(186, 218, 255) 45%, rgb(0, 222, 252) 98%);
   color: #fff !important;
   position: relative;
   z-index: 9;
@@ -173,6 +127,85 @@ a:hover {
   background: #13131E;
   z-index: -9;
   border-radius: 50px;
+}
+
+.hamburger-menu {
+  width: 26.58px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 12px;
+  z-index: 99;
+  cursor: pointer;
+  display: none;
+}
+.hamburger-menu span {
+  display: block;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+.hamburger-menu span:first-of-type {
+  width: 100%;
+  margin-bottom: 4px;
+}
+.hamburger-menu span:last-of-type {
+  width: 50%;
+  margin-left: auto;
+}
+.hamburger-menu.active span:first-of-type {
+  transform: rotate(45deg) translate(-3px, -2px);
+  margin-bottom: 0;
+}
+.hamburger-menu.active span:last-of-type {
+  width: 100%;
+  transform: rotate(-45deg) translate(4px, -6px);
+}
+
+.mobile-menu-box {
+  background-color: #13131E;
+  padding: 6rem 0 1rem 0;
+  transition: all 0.3s;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+.mobile-menu-box.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-menu {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mobile-menu a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  transition: all 0.3s;
+}
+.mobile-menu a:hover {
+  color: #00DEFC;
+}
+
+.social-icon-mobile {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.social-icon-mobile svg {
+  width: 16px;
+}
+.social-icon-mobile svg path {
+  transition: all 0.3s;
+}
+.social-icon-mobile svg:hover path {
+  fill: #00DEFC;
 }
 
 /* banner section */
@@ -257,8 +290,8 @@ a:hover {
   font-size: 24px;
   line-height: 156.5%;
   color: #fff;
-  background: #00defc;
-  background: linear-gradient(31deg, #00defc 0%, #baffd1 100%);
+  background: rgb(0, 222, 252);
+  background: linear-gradient(31deg, rgb(0, 222, 252) 0%, rgb(186, 255, 209) 100%);
   border-radius: 33.7337px;
   text-align: center;
   line-height: 68px;
@@ -674,8 +707,8 @@ a:hover {
   border: none;
   height: 66px;
   width: 100%;
-  background: #00defc;
-  background: linear-gradient(264deg, #00defc 0%, #baffd1 100%);
+  background: rgb(0, 222, 252);
+  background: linear-gradient(264deg, rgb(0, 222, 252) 0%, rgb(186, 255, 209) 100%);
   font-weight: 600;
   font-size: 24px;
   line-height: 156.5%;
@@ -818,6 +851,35 @@ a:hover {
 }
 .footer-social a:hover svg path {
   fill: #00DEFC;
+}
+
+.footer-mobile-link {
+  padding-top: 200px;
+  display: none;
+}
+.footer-mobile-link p {
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
+}
+.footer-mobile-link ul {
+  display: flex;
+  align-items: center;
+}
+.footer-mobile-link ul li {
+  border-right: 1px solid #fff;
+  padding: 0 1rem;
+}
+.footer-mobile-link ul li:first-child {
+  padding-left: 0;
+}
+.footer-mobile-link ul li:last-child {
+  border-right: none;
+}
+.footer-mobile-link ul li a {
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
 }
 
 /* mission banner section */
