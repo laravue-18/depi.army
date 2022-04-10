@@ -93,6 +93,37 @@ class UserController extends Controller
         }
     }
 
+    public function dashboard(){
+        $user = auth()->user();
+        $metrics = $user->metrics();
+        return view('user.index')->with(compact('user', 'metrics'));
+    }
+
+    public function rank(){
+        $user = auth()->user();
+        $metrics = $user->metrics();
+        return view('user.rank')->with(compact('user', 'metrics'));
+    }
+
+    public function stats(){
+        $user = auth()->user();
+        $metrics = $user->metrics();
+        return view('user.stats')->with(compact('user', 'metrics'));
+    }
+
+    public function following(Request $request){
+        $user = auth()->user();
+        $response = Http::withToken($user->provider_token)
+            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/following", [
+                "target_user_id" => env('TWITTER_FOLLOW_ID')
+            ])
+            ->json();
+        if($response['data']['following']){
+            $user->update(['following_at' => now()]);
+            return redirect()->back();
+        }
+    }
+
     public function callbackDiscord(){
         $discordUser = Socialite::driver('discord')->user();
 
@@ -107,28 +138,10 @@ class UserController extends Controller
             'discord_id' => $discordUser->id,
             'discord_token' => $discordUser->token,
             'discord_refresh_token' => $discordUser->refreshToken,
+            'join_at' => now()
         ]);
 
         return redirect('/home');
-    }
-
-    public function dashboard(){
-        $user = auth()->user();
-        return view('dashboard')->with(compact('user'));
-    }
-
-    public function following(Request $request){
-        $user = auth()->user();
-        $response = Http::withToken($user->provider_token)
-            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/following", [
-                "target_user_id" => "1502967806517817349"
-            ]);
-        $request->session()->flash("following", $response->json('data.following'));
-        return redirect()->back();
-    }
-
-    public function profile(){
-        return view('profile');
     }
 
     public function tweet(Request $request){
@@ -142,10 +155,17 @@ class UserController extends Controller
             $request->session()->flash("error", $response['detail']);
         }
         if(isset($response['data']['id'])){
-            auth()->user()->update(['tweet_id' => $response['data']['id']]);
+            auth()->user()->update([
+                'tweet_id' => $response['data']['id'],
+                'tweet_at' => now()
+            ]);
         }
 
         return redirect()->back();
+    }
+
+    public function profile(){
+        return view('profile');
     }
 
     public function logout(){

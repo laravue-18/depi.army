@@ -27,6 +27,9 @@ class CreateUsersTable extends Migration
             $table->string('discord_id')->nullable();
             $table->string('discord_token')->nullable();
             $table->string('discord_refresh_token')->nullable();
+            $table->date('following_at')->nullable();
+            $table->date('join_at')->nullable();
+            $table->date('tweet_at')->nullable();
             $table->string('tweet_id')->nullable();
             $table->unsignedBigInteger('referrer_id')->nullable();
             $table->string('password')->nullable();

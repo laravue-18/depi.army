@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 Route::get('cmd', function(){
-    $exitCode = Artisan::call('migrate');
+    $exitCode = Artisan::call('');
     dd($exitCode);
 });
 
@@ -35,6 +35,8 @@ Route::get('/auth/callback/twitter',  [UserController::class, 'callback']);
 Route::middleware('auth')->group(function(){
     Route::post('following', [UserController::class, 'following']);
     Route::get('home', [UserController::class, 'dashboard']);
+    Route::get('rank', [UserController::class, 'rank']);
+    Route::get('stats', [UserController::class, 'stats']);
     Route::post('logout', [UserController::class, 'logout']);
 
     Route::get('discord', [UserController::class, 'redirectDiscord']);
