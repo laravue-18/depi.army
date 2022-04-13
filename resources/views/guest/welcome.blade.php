@@ -267,5 +267,7 @@
                 e.target.setCustomValidity("");
             };
         })
+
+        if({{ session()->get('notRegistered') }}) alert('not registered');
     </script>
 @endpush
