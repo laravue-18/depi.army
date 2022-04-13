@@ -11345,10 +11345,12 @@ a {
     z-index: 9
 }
 
-.admin-menu a {
+.admin-menu a, .admin-menu button{
     font-size: 18px;
     line-height: 22px;
-    color: #9EA5CD
+    color: #9EA5CD;
+    border: none;
+    background: transparent;
 }
 
 .admin-menu a.active,.admin-menu a:hover {
