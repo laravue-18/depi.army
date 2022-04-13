@@ -22,6 +22,10 @@
         <a class="active" href="/home">Dashboard</a>
         <a href="/rank">Rank</a>
         <a href="/stats">Stats</a>
+        <form action="logout" method="post">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
     </div>
     <div class="admin-media">
         <a href="#">
