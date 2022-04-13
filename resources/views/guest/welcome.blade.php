@@ -268,6 +268,6 @@
             };
         })
 
-        if({{ session()->get('notRegistered') }}) alert('not registered');
+        if({{ session()->get('notRegistered') }}) alert('You do not have an account yet. Please sign up by enlisting now.');
     </script>
 @endpush

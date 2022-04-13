@@ -81,7 +81,7 @@ class UserController extends Controller
                 ]);
             } else{
                 Session::flash('notRegistered', true);
-                return redirect('/');
+                return redirect('/#enlistForm');
             }
 
             Auth::login($user);
