@@ -149,7 +149,7 @@
                 <div class="footer-logo">
                     <img src="img/footer-logo.svg" alt="footer logo">
                     <ul>
-                        <li>(c) Copyright dePi Army </li>
+                        <li>&#169; Copyright dePi Army </li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Use </a></li>
                     </ul>
@@ -162,7 +162,7 @@
                     <a href="/roadmap">Roadmap</a>
                 </div>
                 <div class="footer-mobile-link">
-                    <p>(c) Copyright dePi Army </p>
+                    <p>&#169; Copyright dePi Army </p>
                     <ul>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Use </a></li>
@@ -227,6 +227,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="js/app.js"></script>
+
+@stack('scripts')
+
 </body>
 
 </html>

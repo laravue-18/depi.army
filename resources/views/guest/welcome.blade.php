@@ -241,30 +241,6 @@
                             anonymous, we do not request your email from twitter.</p>
                         <form  action="enlist" method="post">
                             @csrf
-                            <!-- <div class="form-input">
-                                <input type="text" class="select-input" placeholder="Enter Email">
-                                <div class="form-select-option">
-                                    <button class="form-select-btn" type="button">
-                                        <svg width="18" height="10" viewBox="0 0 18 10" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0.978394 1.20361L8.95054 9.17576L16.9227 1.20361"
-                                                stroke="white" />
-                                        </svg>
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </button>
-                                    <div class="select-option">
-                                        <a href="javascript:void(0)" data-info="Enter Email"
-                                            data-icon="fa-solid fa-envelope"><i
-                                                class="fa-solid fa-envelope"></i>Email</a>
-                                        <a href="javascript:void(0)" data-info="Discord Id"
-                                            data-icon="fa-brands fa-discord"><i
-                                                class="fa-brands fa-discord"></i>Discord</a>
-                                        <a href="javascript:void(0)" data-info="Twitter Id"
-                                            data-icon="fa-brands fa-twitter"><i
-                                                class="fa-brands fa-twitter"></i>Twitter</a>
-                                    </div>
-                                </div>
-                            </div> -->
                             <div class="form-input">
                                 <input type="text" name="wallet_id" placeholder="Enter Wallet" required>
                             </div>
@@ -276,3 +252,20 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const wallet = document.querySelector("input[name='wallet_id']");
+            wallet.oninvalid = function(e) {
+                e.target.setCustomValidity("");
+                if (!e.target.validity.valid) {
+                    e.target.setCustomValidity("A wallet address is required so we can whitelist it");
+                }
+            };
+            wallet.oninput = function(e) {
+                e.target.setCustomValidity("");
+            };
+        })
+    </script>
+@endpush

@@ -7,6 +7,7 @@ const init = () => {
     const headerTimgline = gsap.timeline();
 
     // header content animation
+
     headerTimgline
         .from(".banner-content h2", {
             y: 30,
@@ -69,10 +70,10 @@ const init = () => {
             duration: 60,
             scrollTrigger: {
                 trigger: ".join-overlay",
-                start: "top 80%",
+                start: "top 90%",
                 end: "botom 50%",
                 yoyo: true,
-                scrub: 1,
+                scrub: 0.4,
             },
         })
         .to(".art-dot", {
@@ -80,7 +81,7 @@ const init = () => {
             duration: 60,
             scrollTrigger: {
                 trigger: ".art-dot",
-                start: "top 80%",
+                start: "top 90%",
                 end: "botom 50%",
                 yoyo: true,
                 scrub: 1,
@@ -101,13 +102,14 @@ const init = () => {
     // banner background animation
 
     const bannerTimeline = gsap.timeline();
-
-    bannerTimeline.from(".banner-section", {
-        "background-position": "150px 0",
-        duration: 18,
-        yoyo: true,
-        repeat: -1,
-    });
+    if (window.innerWidth > 450) {
+        bannerTimeline.from(".banner-section", {
+            "background-position": "150px 0",
+            duration: 18,
+            yoyo: true,
+            repeat: -1,
+        });
+    }
 
     // art section
     const artTimeLine = gsap.timeline();
