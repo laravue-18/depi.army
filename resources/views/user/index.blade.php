@@ -235,12 +235,6 @@
             });
         });
 
-        window.onclick = (e) => {
-            if (e.target.classList.contains("admin-window-box")) {
-                document.querySelector(".admin-window-box").remove("active");
-            }
-        };
-
         const circle = document.querySelectorAll(".admin-timeline-circle");
         if (circle) {
             const stepAttr = document.querySelector(".timeline-bar");
