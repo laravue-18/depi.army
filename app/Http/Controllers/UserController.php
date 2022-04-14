@@ -47,6 +47,10 @@ class UserController extends Controller
             ->redirect();
     }
 
+    public function activate(){
+        dd('Activate Page');
+    }
+
     public function redirectDiscord(){
         return Socialite::driver('discord')
             ->scopes(['guilds.join'])

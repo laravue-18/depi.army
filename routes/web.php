@@ -32,7 +32,8 @@ Route::middleware('guest')->group(function(){
 
 Route::get('/auth/callback/twitter',  [UserController::class, 'callback']);
 
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth', 'activated'])->group(function(){
+    Route::get('activate', [UserController::class, 'activate'])->withoutMiddleware('activated');
     Route::post('following', [UserController::class, 'following']);
     Route::get('home', [UserController::class, 'dashboard']);
     Route::get('rank', [UserController::class, 'rank']);

@@ -86,7 +86,7 @@
             <a class="join-step" href="javascript:void(0)">2. Join</a>
             <a class="tweet-step" href="javascript:void(0)">3. Tweet</a>
         </div>
-        <div class="admin-step-one active">
+        <div class="admin-step-one {{ $user->followe ? '' : 'active' }}">
             <form action="following" method="post">
                 @csrf
                 <div class="admin-step-first">
@@ -110,7 +110,7 @@
             </form>
             <a id="step-next-one" class="window-next" href="javascript:void(0)">Next</a>
         </div>
-        <div class="admin-step-two">
+        <div class="admin-step-two {{ ($user->following_at && !$user->tweet_at) ? 'active' : '' }}">
             <div class="admin-step-second">
                 <svg width="32" height="34" viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_412_473)">
@@ -251,15 +251,7 @@
             }
         }
 
-        const sidebar = document.querySelector(".admin-slidebar");
 
-        const hanburger = () => {
-            sidebar.classList.add("active");
-        };
-
-        const hanburgerCross = () => {
-            sidebar.classList.remove("active");
-        };
 
     </script>
 @endpush
