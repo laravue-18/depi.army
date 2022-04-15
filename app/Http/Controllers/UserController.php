@@ -47,16 +47,6 @@ class UserController extends Controller
             ->redirect();
     }
 
-    public function activate(){
-        return view('user.activate');
-    }
-
-    public function redirectDiscord(){
-        return Socialite::driver('discord')
-            ->scopes(['guilds.join'])
-            ->redirect();
-    }
-
     public function callback()
     {
         try {
@@ -97,6 +87,31 @@ class UserController extends Controller
         }
     }
 
+    public function activate(){
+        $user = auth()->user();
+        $metrics = $user->metrics();
+        return view('user.activate')->with(compact('user', 'metrics'));
+    }
+
+    public function following(Request $request){
+        $user = auth()->user();
+        $response = Http::withToken($user->provider_token)
+            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/following", [
+                "target_user_id" => env('TWITTER_FOLLOW_ID')
+            ])
+            ->json();
+        if($response['data']['following']){
+            $user->update(['following_at' => now()]);
+            return redirect()->back();
+        }
+    }
+
+    public function redirectDiscord(){
+        return Socialite::driver('discord')
+            ->scopes(['guilds.join'])
+            ->redirect();
+    }
+
     public function dashboard(){
         $user = auth()->user();
         $metrics = $user->metrics();
@@ -115,18 +130,7 @@ class UserController extends Controller
         return view('user.stats')->with(compact('user', 'metrics'));
     }
 
-    public function following(Request $request){
-        $user = auth()->user();
-        $response = Http::withToken($user->provider_token)
-            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/following", [
-                "target_user_id" => env('TWITTER_FOLLOW_ID')
-            ])
-            ->json();
-        if($response['data']['following']){
-            $user->update(['following_at' => now()]);
-            return redirect()->back();
-        }
-    }
+
 
     public function callbackDiscord(){
         $discordUser = Socialite::driver('discord')->user();
