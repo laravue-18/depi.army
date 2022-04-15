@@ -48,7 +48,7 @@ class UserController extends Controller
     }
 
     public function activate(){
-        dd('Activate Page');
+        return view('user.activate');
     }
 
     public function redirectDiscord(){
