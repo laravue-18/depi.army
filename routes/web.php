@@ -32,20 +32,24 @@ Route::middleware('guest')->group(function(){
 
 Route::get('/auth/callback/twitter',  [UserController::class, 'callback']);
 
-Route::middleware(['auth', 'activated'])->group(function(){
-    Route::get('activate', [UserController::class, 'activate'])->withoutMiddleware('activated');
-    Route::post('logout', [UserController::class, 'logout'])->withoutMiddleware('activated');
-    Route::post('following', [UserController::class, 'following']);
-    Route::get('home', [UserController::class, 'dashboard']);
-    Route::get('rank', [UserController::class, 'rank']);
-    Route::get('stats', [UserController::class, 'stats']);
+Route::middleware(['auth'])->group(function(){
+    Route::post('logout', [UserController::class, 'logout']);
 
+    Route::get('activate', [UserController::class, 'activate']);
+
+    Route::post('following', [UserController::class, 'following']);
     Route::get('discord', [UserController::class, 'redirectDiscord']);
     Route::get('/auth/callback/discord',  [UserController::class, 'callbackDiscord']);
 
     Route::post('tweet', [UserController::class, 'tweet']);
 
     Route::get('{username}', [UserController::class, 'profile']);
+
+    Route::middleware(['activated'])->group(function(){
+        Route::get('home', [UserController::class, 'dashboard']);
+        Route::get('rank', [UserController::class, 'rank']);
+        Route::get('stats', [UserController::class, 'stats']);
+    });
 });
 
 
