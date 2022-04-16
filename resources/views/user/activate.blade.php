@@ -1,80 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-<div class="admin-content">
-    <div class="admin-base">
-        <div class="admin-base-logo">
-            <img src="img/{{ $metrics['rank'] }}.svg" alt="">
-            <div>
-                <p>My Rank</p>
-                <h2>{{ $metrics['rank'] }}</h2>
-            </div>
-        </div>
-    </div>
-    <div class="admin-share">
-        <h2>Build Your Brigade</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <div class="admin-input">
-            <input type="text" value="{{ $user->share_link }}">
-            <div class="admin-share-icon">
-                <a class="copy-btn" onclick="event.preventDefault()" href="javascrip:void(0)">
-                    <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_319_704)">
-                            <path d="M8.60449 3.73608V14.2361C8.60449 14.7002 8.80927 15.1453 9.17376 15.4735C9.53826 15.8017 10.0326 15.9861 10.5481 15.9861H18.3226C18.8381 15.9861 19.3324 15.8017 19.6969 15.4735C20.0614 15.1453 20.2662 14.7002 20.2662 14.2361V6.57283C20.2662 6.3397 20.2144 6.10892 20.1139 5.89405C20.0135 5.67918 19.8663 5.48455 19.6812 5.32158L16.4596 2.48483C16.0965 2.16516 15.6089 1.98614 15.101 1.98608H10.5481C10.0326 1.98608 9.53826 2.17046 9.17376 2.49865C8.80927 2.82684 8.60449 3.27196 8.60449 3.73608V3.73608Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M16.379 15.9861V17.7361C16.379 18.2002 16.1742 18.6453 15.8097 18.9735C15.4452 19.3017 14.9509 19.4861 14.4354 19.4861H6.6609C6.14542 19.4861 5.65106 19.3017 5.28656 18.9735C4.92206 18.6453 4.71729 18.2002 4.71729 17.7361V8.11108C4.71729 7.64696 4.92206 7.20184 5.28656 6.87365C5.65106 6.54546 6.14542 6.36108 6.6609 6.36108H8.60452" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_319_704">
-                                <rect width="23.3234" height="21" fill="white" transform="translate(0.830078 0.236084)"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                </a>
-                <a href="javascrip:void(0)">
-                    <svg width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21.9973 6.22538L14.3615 0.458105C13.6931 -0.0467719 12.6397 0.363087 12.6397 1.14736V4.18508C5.67092 4.25487 0.14502 5.47647 0.14502 11.2529C0.14502 13.5844 1.86221 15.8941 3.76037 17.1017C4.35269 17.4785 5.19686 17.0055 4.97847 16.3947C3.01125 10.892 5.91153 9.43109 12.6397 9.34644V12.6825C12.6397 13.468 13.6939 13.876 14.3615 13.3717L21.9973 7.6039C22.4776 7.24106 22.4783 6.58872 21.9973 6.22538Z" fill="white"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="admin-brigade">
-        <div class="admin-brigade-content">
-            <h4>My Brigade</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-            <h4>
-                Total : <span>{{ $metrics['brigade']['total_count'] }}</span>
-            </h4>
-        </div>
-        <div class="admin-brigade-table">
-            <div class="admin-brigade-item">
-                <h4>General</h4>
-                <h4>{{ $metrics['brigade']['general_count'] }}</h4>
-            </div>
-            <div class="admin-brigade-item">
-                <h4>Colonel</h4>
-                <h4>{{ $metrics['brigade']['colonel_count'] }}</h4>
-            </div>
-            <div class="admin-brigade-item">
-                <h4>Major</h4>
-                <h4>{{ $metrics['brigade']['major_count'] }}</h4>
-            </div>
-            <div class="admin-brigade-item">
-                <h4>Captain</h4>
-                <h4>{{ $metrics['brigade']['captain_count'] }}</h4>
-            </div>
-            <div class="admin-brigade-item">
-                <h4>Lieutenant</h4>
-                <h4>{{ $metrics['brigade']['lieutenant_count'] }}</h4>
-            </div>
-            <div class="admin-brigade-item">
-                <h4>Unactivated</h4>
-                <h4>{{ $metrics['brigade']['unactivated_count'] }}</h4>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- admin window step -->
+
 <section class="admin-window-box {{ $metrics['rank'] == 'Unactivated' ? 'active' : '' }}">
     <div class="admin-window-content">
         <div class="admin-window-text">
@@ -108,7 +35,9 @@
                     @endif
                 </div>
             </form>
-            <a id="step-next-one" class="window-next" href="javascript:void(0)">Next</a>
+            @if($user->following_at)
+                <a id="step-next-one" class="window-next" href="javascript:void(0)">Next</a>
+            @endif
         </div>
         <div class="admin-step-two {{ ($user->following_at && !$user->tweet_at) ? 'active' : '' }}">
             <div class="admin-step-second">
