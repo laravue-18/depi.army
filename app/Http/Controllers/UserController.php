@@ -151,7 +151,7 @@ class UserController extends Controller
         ]);
         $user = auth()->user();
         $step = 2;
-        return redirect('/activate')->with(compact('user', 'step'));
+        return view('activate')->with(compact('user', 'step'));
     }
 
     public function tweet(Request $request){
