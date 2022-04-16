@@ -149,8 +149,9 @@ class UserController extends Controller
             'discord_refresh_token' => $discordUser->refreshToken,
             'join_at' => now()
         ]);
-
-        return redirect('/home');
+        $user = auth()->user();
+        $step = 2;
+        return redirect('/activate')->with(compact('user', 'step'));
     }
 
     public function tweet(Request $request){
