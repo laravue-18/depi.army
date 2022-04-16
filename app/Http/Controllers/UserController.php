@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
+use Nette\InvalidStateException;
 
 class UserController extends Controller
 {
@@ -82,7 +83,7 @@ class UserController extends Controller
 
             return redirect('/home');
 
-        } catch (Exception $e) {
+        } catch (InvalidStateException $e) {
             dd($e->getMessage());
         }
     }

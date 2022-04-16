@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -32,6 +34,12 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+        $this->renderable(function (RequestException $e, $request) {
+            if($request->path() == "auth/callback/twitter") {
+                session()->flash('twitterError', "There's a problem in your twitter account.");
+                return redirect('/');
+            }
+        });
     }
+
 }

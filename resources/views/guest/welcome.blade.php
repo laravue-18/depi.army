@@ -269,5 +269,6 @@
         })
 
         if({{ session()->get('notRegistered') }}) alert('You do not have an account yet. Please sign up by enlisting now.');
+        if({{ session()->get('twitterError') }}) alert("It seems there's a problem in your twitter acount.");
     </script>
 @endpush
