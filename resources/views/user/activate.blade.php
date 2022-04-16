@@ -53,7 +53,7 @@
                 </svg>
                 <p>Join Our Discord Server</p>
                 @if($user->join_at)
-                    <a href="/discord">Joined</a>
+                    <a href="#">Joined</a>
                 @else
                     <a href="/discord">Join Now</a>
                 @endif
