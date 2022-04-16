@@ -86,7 +86,7 @@
             @endif
         </div>
         <div class="admin-step-three {{ $step == 3 ? 'active' : '' }}">
-            <img src="./img/tweet.png">
+            <img src="/img/tweet.png">
             <form action="tweet" method="post">
                 @csrf
                 <div class="admin-tweet-link">

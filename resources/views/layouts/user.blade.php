@@ -8,14 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="/css/user.css">
 </head>
 <body>
 <!-- admin sidebar -->
 <div class="admin-slidebar">
     <div class="admin-logo">
         <a href="index.html">
-            <img src="img/logo.png">
+            <img src="/img/logo.png">
         </a>
     </div>
     <div class="admin-menu">
@@ -66,7 +66,7 @@
         </a>
     </div>
     <div class="admin-bg">
-        <img src="img/sidebar-bg.png">
+        <img src="/img/sidebar-bg.png">
     </div>
     <div class="hamburger-cross" onclick="hanburgerCross()">
         <span></span>
