@@ -13,7 +13,7 @@
             <a class="join-step" href="javascript:void(0)">2. Join</a>
             <a class="tweet-step" href="javascript:void(0)">3. Tweet</a>
         </div>
-        <div class="admin-step-one {{ $user->followe ? '' : 'active' }}">
+        <div class="admin-step-one {{ $step == '1' ? 'active' : '' }}">
             <form action="following" method="post">
                 @csrf
                 <div class="admin-step-first">
@@ -39,7 +39,7 @@
                 <a id="step-next-one" class="window-next" href="javascript:void(0)">Next</a>
             @endif
         </div>
-        <div class="admin-step-two {{ ($user->following_at && !$user->tweet_at) ? 'active' : '' }}">
+        <div class="admin-step-two {{ $step == '2' ? 'active' : '' }}">
             <div class="admin-step-second">
                 <svg width="32" height="34" viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_412_473)">
@@ -79,7 +79,7 @@
             </div>
             <a id="step-next-two" class="window-next" href="javascript:void(0)">Next</a>
         </div>
-        <div class="admin-step-three">
+        <div class="admin-step-three {{ $step == '3' ? 'active' : '' }}">
             <img src="./img/tweet.png">
             <form action="tweet" method="post">
                 @csrf

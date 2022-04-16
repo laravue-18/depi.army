@@ -90,8 +90,8 @@ class UserController extends Controller
 
     public function activate(){
         $user = auth()->user();
-        $metrics = $user->metrics();
-        return view('user.activate')->with(compact('user', 'metrics'));
+        $step = 1;
+        return view('user.activate')->with(compact('user', 'step'));
     }
 
     public function following(Request $request){
