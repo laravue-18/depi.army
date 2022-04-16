@@ -52,7 +52,11 @@
                     </defs>
                 </svg>
                 <p>Join Our Discord Server</p>
-                <a href="/discord">Join Now</a>
+                @if($user->join_at)
+                    <a href="/discord">Joined</a>
+                @else
+                    <a href="/discord">Join Now</a>
+                @endif
             </div>
             <div class="admin-step-email">
                 <div class="admin-mail-head">
@@ -77,7 +81,9 @@
                     </div>
                 </form>
             </div>
-            <a id="step-next-two" class="window-next" href="javascript:void(0)">Next</a>
+            @if($user->join_at)
+                <a id="step-next-two" class="window-next" href="javascript:void(0)">Next</a>
+            @endif
         </div>
         <div class="admin-step-three {{ $step == 3 ? 'active' : '' }}">
             <img src="./img/tweet.png">
