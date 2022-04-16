@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="admin-window-box {{ $metrics['rank'] == 'Unactivated' ? 'active' : '' }}">
+<section class="admin-window-box active">
     <div class="admin-window-content">
         <div class="admin-window-text">
             <h2>Lieutenant Activation</h2>
