@@ -37,7 +37,7 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (RequestException $e, $request) {
             if($request->path() == "auth/callback/twitter") {
-                Session::flash('notRegistered', true);
+                Session::flash('twitterError', true);
                 return redirect('/');
             }
         });
