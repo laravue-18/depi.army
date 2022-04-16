@@ -12195,7 +12195,8 @@ a {
 
 .admin-tweet-link p {
     color: #FFF;
-    padding-left: 2rem
+    padding: 0 2rem;
+    flex: 1;
 }
 
 .admin-tweet-link p span:focus {
@@ -12203,6 +12204,7 @@ a {
 }
 
 .admin-tweet-link p input {
+    width: 100%;
     background: 0 0;
     border: none;
     color: #fff!important

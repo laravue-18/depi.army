@@ -113,26 +113,6 @@ class UserController extends Controller
             ->redirect();
     }
 
-    public function dashboard(){
-        $user = auth()->user();
-        $metrics = $user->metrics();
-        return view('user.index')->with(compact('user', 'metrics'));
-    }
-
-    public function rank(){
-        $user = auth()->user();
-        $metrics = $user->metrics();
-        return view('user.rank')->with(compact('user', 'metrics'));
-    }
-
-    public function stats(){
-        $user = auth()->user();
-        $metrics = $user->metrics();
-        return view('user.stats')->with(compact('user', 'metrics'));
-    }
-
-
-
     public function callbackDiscord(){
         $discordUser = Socialite::driver('discord')->user();
 
@@ -155,10 +135,14 @@ class UserController extends Controller
     }
 
     public function tweet(Request $request){
+        $text = $request->input('text');
         $user = auth()->user();
         $response = Http::withToken($user->provider_token)
             ->post("https://api.twitter.com/2/tweets/", [
-                "text" => "Join My Brigade " . $user['referral_link'],
+                "text" => $text,
+                "media" => [
+                    "URL" => url('/img/tweet.png')
+                ]
             ])
             ->json();
         if(isset($response['detail'])){
@@ -171,8 +155,33 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        $step = 3;
+        return view('user.activate')->with(compact('user', 'step'));
     }
+
+    public function dashboard(){
+        $user = auth()->user();
+        $metrics = $user->metrics();
+        return view('user.index')->with(compact('user', 'metrics'));
+    }
+
+    public function rank(){
+        $user = auth()->user();
+        $metrics = $user->metrics();
+        return view('user.rank')->with(compact('user', 'metrics'));
+    }
+
+    public function stats(){
+        $user = auth()->user();
+        $metrics = $user->metrics();
+        return view('user.stats')->with(compact('user', 'metrics'));
+    }
+
+
+
+
+
+
 
     public function profile(){
         return view('profile');

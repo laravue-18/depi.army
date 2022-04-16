@@ -91,7 +91,7 @@
                 @csrf
                 <div class="admin-tweet-link">
                     <p>
-                        <input type="text" value="Join My Brigade {{ $user->share_link }}">
+                        <input type="text" name="" value="Join My Brigade {{ $user->share_link }}">
                     </p>
                     <button>
                         <svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,14 +111,16 @@
             <div class="admin-twees-bottom">
                 <div class="admin-check">
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" checked>
                         <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 7L5 9.5L12 1" stroke="white" stroke-linecap="round"/>
                         </svg>
                     </label>
                     <p>I have completed all the tasks to earn my rank as a Lietenant</p>
                 </div>
-                <a id="step-next-three" class="window-next" href="javascript:void(0)">Complete</a>
+                @if($user->tweet_at)
+                    <a id="step-next-three" class="window-next" href="javascript:void(0)">Complete</a>
+                @endif
             </div>
         </div>
     </div>

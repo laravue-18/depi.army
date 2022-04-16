@@ -43,13 +43,13 @@ Route::middleware(['auth'])->group(function(){
 
     Route::post('tweet', [UserController::class, 'tweet']);
 
-    Route::get('{username}', [UserController::class, 'profile']);
-
     Route::middleware(['activated'])->group(function(){
         Route::get('home', [UserController::class, 'dashboard']);
         Route::get('rank', [UserController::class, 'rank']);
         Route::get('stats', [UserController::class, 'stats']);
     });
+
+    Route::get('{username}', [UserController::class, 'profile']);
 });
 
 
