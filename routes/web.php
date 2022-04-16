@@ -34,11 +34,11 @@ Route::get('/auth/callback/twitter',  [UserController::class, 'callback']);
 
 Route::middleware(['auth', 'activated'])->group(function(){
     Route::get('activate', [UserController::class, 'activate'])->withoutMiddleware('activated');
+    Route::post('logout', [UserController::class, 'logout'])->withoutMiddleware('activated');
     Route::post('following', [UserController::class, 'following']);
     Route::get('home', [UserController::class, 'dashboard']);
     Route::get('rank', [UserController::class, 'rank']);
     Route::get('stats', [UserController::class, 'stats']);
-    Route::post('logout', [UserController::class, 'logout']);
 
     Route::get('discord', [UserController::class, 'redirectDiscord']);
     Route::get('/auth/callback/discord',  [UserController::class, 'callbackDiscord']);
