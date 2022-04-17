@@ -153,7 +153,13 @@
                         method: 'POST'
                     })
                     .then(res => res.json())
-                    .then(data => console.log(data))
+                    .then(data => {
+                        if(data.success){
+                            alert("You're following Depi Army.")
+                            this.$set(this.user, 'following_at', data.following_at)
+                        }
+                    })
+
                 }
             }
         })

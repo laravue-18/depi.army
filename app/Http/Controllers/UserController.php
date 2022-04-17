@@ -103,7 +103,7 @@ class UserController extends Controller
         if($response['data']['following']){
             $t = now();
             $user->update(['following_at' => $t]);
-            return ["following_at" => $t];
+            return ["success" => true, "following_at" => $t];
         }
     }
 
