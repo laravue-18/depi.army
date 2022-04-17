@@ -141,7 +141,7 @@ class UserController extends Controller
             ->post("https://api.twitter.com/2/tweets/", [
                 "text" => $text,
                 "media" => [
-                    "URL" => url('/img/tweet.png')
+                    "media_ids" => ["1515486189008027649"]
                 ]
             ])
             ->json();
@@ -176,12 +176,6 @@ class UserController extends Controller
         $metrics = $user->metrics();
         return view('user.stats')->with(compact('user', 'metrics'));
     }
-
-
-
-
-
-
 
     public function profile(){
         return view('profile');
