@@ -60,7 +60,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['metrics'];
+    protected $appends = [];
 
     public function getShareLinkAttribute(){
         return url(auth()->user()->username);
