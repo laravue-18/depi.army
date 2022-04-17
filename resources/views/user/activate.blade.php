@@ -144,7 +144,7 @@
             data(){
                 return {
                     user: @json($user),
-                    step: @isset($step) $step @endisset  @empty($step) 1 @@endempty,
+                    step: @isset($step) $step @endisset  @empty($step) 1 @endempty,
                 }
             },
             methods: {
