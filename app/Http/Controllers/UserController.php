@@ -129,9 +129,9 @@ class UserController extends Controller
             'discord_refresh_token' => $discordUser->refreshToken,
             'join_at' => now()
         ]);
-        $user = auth()->user();
-        $step = 2;
-        return view('user.activate')->with(compact('user', 'step'));
+
+        Session::flash('step', 2);
+        return redirect('activate');
     }
 
     public function addEmail(Request $request){
