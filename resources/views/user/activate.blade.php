@@ -85,7 +85,7 @@
                     </form>
                 </template>
                 <template v-else>
-                    {{ user.email }}
+                    @{{ user.email }}
                 </template>
             </div>
             <template v-if="user.join_at">
