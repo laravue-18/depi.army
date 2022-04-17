@@ -14,7 +14,7 @@
             <a class="tweet-step" :class="{ active: step==3 }" href="javascript:void(0)">3. Tweet</a>
         </div>
         <div v-if="step==1">
-            <form action="following" method="post">
+            <form action="following" method="post" @submit.prevent="followDepi">
                 @csrf
                 <div class="admin-step-first">
                     <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,11 +28,12 @@
                         </defs>
                     </svg>
                     <p>@depiarmy</p>
-                    @if($user->following_at)
+                    <template v-if="user.following_at">
                         <button type="button">Followed</button>
-                    @else
+                    </template>
+                    <template>
                         <button type="submit">Follow</button>
-                    @endif
+                    </template>
                 </div>
             </form>
             <template v-if="user.following_at">
@@ -140,9 +141,20 @@
     <script>
         var app = new Vue({
             el: '#vapp',
-            data: {
-                user: @json($user),
-                step: 1,
+            data(){
+                return {
+                    user: @json($user),
+                    step: 1,
+                }
+            },
+            methods: {
+                followDepi(){
+                    fetch('/following', {
+                        method: 'POST'
+                    })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+                }
             }
         })
         $(function () {
@@ -157,54 +169,6 @@
                 navigator.clipboard.writeText(input.value);
                 alert("Copied");
             });
-
-            var barWidth = $(".timeline-bar").attr("data-step");
-            if (barWidth <= 4) {
-                var perStep = barWidth * 12;
-                $(".timeline-bar").css({
-                    width: `${perStep}%`,
-                });
-            } else {
-                $(".timeline-bar").css({
-                    width: `${100}%`,
-                });
-            }
-
-            $("#step-next-one").on("click", function () {
-                $(".admin-step-one").removeClass("active");
-                $(".follow-step").removeClass("active");
-                $(".admin-step-two").addClass("active");
-                $(".join-step").addClass("active");
-            });
-
-            $("#step-next-two").on("click", function () {
-                $(".admin-step-one").removeClass("active");
-                $(".follow-step").removeClass("active");
-                $(".admin-step-two").removeClass("active");
-                $(".join-step").removeClass("active");
-                $(".admin-step-three").addClass("active");
-                $(".tweet-step").addClass("active");
-            });
-
-            $("#step-next-three").on("click", function () {
-                $(".admin-window-box").removeClass("active");
-            });
         });
-
-        const circle = document.querySelectorAll(".admin-timeline-circle");
-        if (circle) {
-            const stepAttr = document.querySelector(".timeline-bar");
-            if (stepAttr) {
-                const step = stepAttr.getAttribute("data-step");
-                circle.forEach((item, index) => {
-                    if (index >= parseInt(step)) {
-                        item.style.backgroundColor = "none";
-                    } else {
-                        item.style.background =
-                            "linear-gradient(278.88deg, #00DEFC -103.16%, #BAFFD1 72.76%)";
-                    }
-                });
-            }
-        }
     </script>
 @endpush

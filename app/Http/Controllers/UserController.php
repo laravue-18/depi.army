@@ -101,8 +101,9 @@ class UserController extends Controller
             ])
             ->json();
         if($response['data']['following']){
-            $user->update(['following_at' => now()]);
-            return redirect()->back();
+            $t = now();
+            $user->update(['following_at' => $t]);
+            return ["following_at" => $t];
         }
     }
 
