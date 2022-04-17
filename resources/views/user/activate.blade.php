@@ -9,9 +9,9 @@
             <p>Congratulation, you’ve enlisted and are a few simple tasks away from becoming a ranking Lieutenant. You can then begin building your brigade and climbing rank.</p>
         </div>
         <div class="admin-window-step">
-            <a class="follow-step active" href="javascript:void(0)">1. Follow</a>
-            <a class="join-step" href="javascript:void(0)">2. Join</a>
-            <a class="tweet-step" href="javascript:void(0)">3. Tweet</a>
+            <a class="follow-step {{ $step == 1 ? 'active' : '' }}" href="javascript:void(0)">1. Follow</a>
+            <a class="join-step {{ $step == 2 ? 'active' : '' }}" href="javascript:void(0)">2. Join</a>
+            <a class="tweet-step {{ $step == 3 ? 'active' : '' }}" href="javascript:void(0)">3. Tweet</a>
         </div>
         <div class="admin-step-one {{ $step == 1 ? 'active' : '' }}">
             <form action="following" method="post">
