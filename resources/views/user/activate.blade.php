@@ -31,7 +31,7 @@
                     <template v-if="user.following_at">
                         <button type="button">Followed</button>
                     </template>
-                    <template>
+                    <template v-else>
                         <button type="submit">Follow</button>
                     </template>
                 </div>
@@ -144,7 +144,7 @@
             data(){
                 return {
                     user: @json($user),
-                    step: 1,
+                    step: @isset($step) $step @endisset  @empty($step) 1 @@endempty,
                 }
             },
             methods: {
