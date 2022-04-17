@@ -119,7 +119,7 @@
                     <p>I have completed all the tasks to earn my rank as a Lietenant</p>
                 </div>
                 @if($user->tweet_at)
-                    <a id="step-next-three" class="window-next" href="javascript:void(0)">Complete</a>
+                    <a id="step-next-three" class="window-next" href="/home">Complete</a>
                 @endif
             </div>
         </div>
