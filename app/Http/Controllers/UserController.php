@@ -141,7 +141,7 @@ class UserController extends Controller
             ->post("https://api.twitter.com/2/tweets/", [
                 "text" => $text,
                 "media" => [
-                    "media_ids" => ["1515486189008027649"]
+                    "media_ids" => ["1515505841700413446"]
                 ]
             ])
             ->json();
