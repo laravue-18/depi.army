@@ -2,18 +2,18 @@
 
 @section('content')
 
-<section class="admin-window-box active">
+<section class="admin-window-box active" id="vapp">
     <div class="admin-window-content">
         <div class="admin-window-text">
             <h2>Lieutenant Activation</h2>
             <p>Congratulation, you’ve enlisted and are a few simple tasks away from becoming a ranking Lieutenant. You can then begin building your brigade and climbing rank.</p>
         </div>
         <div class="admin-window-step">
-            <a class="follow-step {{ $step == 1 ? 'active' : '' }}" href="javascript:void(0)">1. Follow</a>
-            <a class="join-step {{ $step == 2 ? 'active' : '' }}" href="javascript:void(0)">2. Join</a>
-            <a class="tweet-step {{ $step == 3 ? 'active' : '' }}" href="javascript:void(0)">3. Tweet</a>
+            <a class="follow-step" :class="{ active: step==1 }" href="javascript:void(0)">1. Follow</a>
+            <a class="join-step" :class="{ active: step==2 }" href="javascript:void(0)">2. Join</a>
+            <a class="tweet-step" :class="{ active: step==3 }" href="javascript:void(0)">3. Tweet</a>
         </div>
-        <div class="admin-step-one {{ $step == 1 ? 'active' : '' }}">
+        <div v-if="step==1">
             <form action="following" method="post">
                 @csrf
                 <div class="admin-step-first">
@@ -35,11 +35,11 @@
                     @endif
                 </div>
             </form>
-            @if($user->following_at)
+            <template v-if="user.following_at">
                 <a id="step-next-one" class="window-next" href="javascript:void(0)">Next</a>
-            @endif
+            </template>
         </div>
-        <div class="admin-step-two {{ $step == 2 ? 'active' : '' }}">
+        <div v-else-if="step==2">
             <div class="admin-step-second">
                 <svg width="32" height="34" viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_412_473)">
@@ -52,11 +52,12 @@
                     </defs>
                 </svg>
                 <p>Join Our Discord Server</p>
-                @if($user->join_at)
+                <template v-if="user.join_at">
                     <a href="#">Joined</a>
-                @else
+                </template>
+                <template v-else>
                     <a href="/discord">Join Now</a>
-                @endif
+                </template>
             </div>
             <div class="admin-step-email">
                 <div class="admin-mail-head">
@@ -74,7 +75,7 @@
                 </div>
             </div>
             <div class="admin-email-box">
-                @if($user->email)
+                <template v-if="user.email">
                     <form action="addEmail" method="post">
                         @csrf
                         <div class="admin-mail-control">
@@ -82,15 +83,16 @@
                             <button type="submit">Submit</button>
                         </div>
                     </form>
-                @else
-                    {{ $user->email }}
-                @endif
+                </template>
+                <template v-else>
+                    {{ user.email }}
+                </template>
             </div>
-            @if($user->join_at)
+            <template v-if="user.join_at">
                 <a id="step-next-two" class="window-next" href="javascript:void(0)">Next</a>
-            @endif
+            </template>
         </div>
-        <div class="admin-step-three {{ $step == 3 ? 'active' : '' }}">
+        <div v-else-if="step==3">
             <img src="/img/tweet.png">
             <form action="tweet" method="post">
                 @csrf
@@ -123,9 +125,9 @@
                     </label>
                     <p>I have completed all the tasks to earn my rank as a Lietenant</p>
                 </div>
-                @if($user->tweet_at)
+                <template v-if="user.tweet_at">
                     <a id="step-next-three" class="window-next" href="/home">Complete</a>
-                @endif
+                </template>
             </div>
         </div>
     </div>
@@ -134,7 +136,15 @@
 @endsection
 
 @push('scripts')
+    <script src="/js/vue@2.6.14.js"></script>
     <script>
+        var app = new Vue({
+            el: '#vapp',
+            data: {
+                user: @json($user),
+                step: 1,
+            }
+        })
         $(function () {
             @if(session()->get('addedEmail'))
                 alert('Your email is aaved to your profile, click next to continue')
