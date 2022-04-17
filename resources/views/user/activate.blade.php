@@ -74,13 +74,17 @@
                 </div>
             </div>
             <div class="admin-email-box">
-                <form action="addEmail" method="post">
-                    @csrf
-                    <div class="admin-mail-control">
-                        <input type="text" type="email" placeholder="Enter Email" required>
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
+                @if($user->email)
+                    <form action="addEmail" method="post">
+                        @csrf
+                        <div class="admin-mail-control">
+                            <input type="text" type="email" placeholder="Enter Email" required>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                @else
+                    {{ $user->email }}
+                @endif
             </div>
             @if($user->join_at)
                 <a id="step-next-two" class="window-next" href="javascript:void(0)">Next</a>
