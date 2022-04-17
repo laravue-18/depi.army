@@ -74,9 +74,10 @@
                 </div>
             </div>
             <div class="admin-email-box">
-                <form action="">
+                <form action="addEmail" method="post">
+                    @csrf
                     <div class="admin-mail-control">
-                        <input type="text" placeholder="Enter Email">
+                        <input type="text" type="email" placeholder="Enter Email" required>
                         <button type="submit">Submit</button>
                     </div>
                 </form>
@@ -131,6 +132,10 @@
 @push('scripts')
     <script>
         $(function () {
+            @if(session()->get('addedEmail'))
+                alert('Your email is aaved to your profile, click next to continue')
+            @endif
+
             $(".copy-btn").on("click", function () {
                 var input = $(".admin-input input")[0];
                 input.select();
@@ -187,8 +192,5 @@
                 });
             }
         }
-
-
-
     </script>
 @endpush

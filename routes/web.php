@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('following', [UserController::class, 'following']);
     Route::get('discord', [UserController::class, 'redirectDiscord']);
     Route::get('/auth/callback/discord',  [UserController::class, 'callbackDiscord']);
-
+    Route::post('addEmail', [UserController::class, 'addEmail']);
     Route::post('tweet', [UserController::class, 'tweet']);
 
     Route::middleware(['activated'])->group(function(){

@@ -134,6 +134,17 @@ class UserController extends Controller
         return view('user.activate')->with(compact('user', 'step'));
     }
 
+    public function addEmail(Request $request){
+        $email = $request->input('email');
+        $user = auth()->user();
+        $user->update([
+            'email' => $email
+        ]);
+        Session::flash('addedEmail', true);
+        $step = 2;
+        return view('user.activate')->with(compact('user', 'step'));
+    }
+
     public function tweet(Request $request){
         $text = $request->input('text');
         $user = auth()->user();
@@ -141,7 +152,7 @@ class UserController extends Controller
             ->post("https://api.twitter.com/2/tweets/", [
                 "text" => $text,
                 "media" => [
-                    "media_ids" => ["1515505841700413446"]
+                    "media_ids" => ["1515505841700413446"],
                 ]
             ])
             ->json();
