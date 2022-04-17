@@ -36,7 +36,7 @@
                 </div>
             </form>
             <template v-if="user.following_at">
-                <a id="step-next-one" class="window-next" href="javascript:void(0)">Next</a>
+                <a class="window-next" @click.prevent="step++">Next</a>
             </template>
         </div>
         <div v-else-if="step==2">
@@ -89,7 +89,7 @@
                 </template>
             </div>
             <template v-if="user.join_at">
-                <a id="step-next-two" class="window-next" href="javascript:void(0)">Next</a>
+                <a class="window-next" @click.prevent="step++">Next</a>
             </template>
         </div>
         <div v-else-if="step==3">

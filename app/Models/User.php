@@ -180,8 +180,6 @@ class User extends Authenticatable
 
     public function getMyTweetsAttribute(){
 //        return ['retweet_count' => 3, 'reply_count' => 2, 'like_count' => 7];
-
-
     }
 
 //    public function getIsFollowedTwitterAttribute(){
