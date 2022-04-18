@@ -68,6 +68,9 @@
                     <p>
                         Add Email <span>(optional)</span>
                     </p>
+                    <template v-if="user.email">
+                        <p>@{{ user.email }}</p>
+                    </template>
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="10.3272" cy="10.4984" r="9.9903" fill="#3A3A53"/>
                         <circle cx="10.3274" cy="6.93221" r="1.05976" transform="rotate(180 10.3274 6.93221)" fill="white"/>
@@ -85,9 +88,7 @@
                         </div>
                     </form>
                 </template>
-                <template v-else>
-                    @{{ user.email }}
-                </template>
+
             </div>
             <template v-if="user.join_at">
                 <a class="window-next" @click.prevent="step++">Next</a>
@@ -95,27 +96,33 @@
         </div>
         <div v-else-if="step==3">
             <img src="/img/tweet.png">
-            <form action="tweet" method="post">
-                @csrf
-                <div class="admin-tweet-link">
-                    <p>
-                        <input type="text" name="text" value="Join My Brigade {{ $user->share_link }}">
-                    </p>
-                    <button>
-                        <svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="0.568848" y="0.180298" width="30.0884" height="30.9626" rx="15.0442" fill="#0EB0E3"/>
-                            <g clip-path="url(#clip0_0_1)">
-                                <path d="M22.8578 11.2224C22.3337 11.4532 21.7784 11.6055 21.2099 11.6745C21.8085 11.3148 22.2567 10.7506 22.4717 10.0861C21.9169 10.4099 21.3021 10.6455 20.6476 10.7768C20.2158 10.315 19.6436 10.0088 19.0199 9.90557C18.3962 9.80237 17.7558 9.90799 17.1983 10.206C16.6408 10.5041 16.1973 10.9779 15.9366 11.5538C15.676 12.1298 15.6128 12.7757 15.7569 13.3913C13.3711 13.2787 11.2577 12.1324 9.84192 10.4011C9.58455 10.8385 9.45031 11.3374 9.45342 11.8449C9.45342 12.8424 9.96092 13.7191 10.7298 14.2342C10.2741 14.2197 9.82849 14.0965 9.43009 13.8749V13.9099C9.42983 14.5728 9.65891 15.2153 10.0785 15.7286C10.498 16.2418 11.0822 16.5941 11.7319 16.7256C11.3109 16.8384 10.87 16.8554 10.4416 16.7752C10.626 17.3457 10.9839 17.8444 11.4653 18.2017C11.9468 18.5591 12.5278 18.7572 13.1273 18.7684C12.112 19.5652 10.8584 19.9977 9.56775 19.9964C9.34025 19.9964 9.11334 19.9829 8.88525 19.9573C10.2011 20.7998 11.7311 21.247 13.2935 21.2459C18.5744 21.2459 21.459 16.8732 21.459 13.0879C21.459 12.9654 21.459 12.8429 21.4503 12.7204C22.0138 12.3149 22.4998 11.8115 22.8853 11.2341L22.8578 11.2224Z" fill="white"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_0_1">
-                                    <rect width="14" height="14" fill="white" transform="translate(8.88525 8.55664)"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </button>
-                </div>
-            </form>
+            <template v-if="user.tweet">
+                <a :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">My Tweet</a>
+            </template>
+            <template v-else>
+                <form action="tweet" method="post" @submit.prevent="tweet">
+                    @csrf
+                    <div class="admin-tweet-link">
+                        <p>
+                            <input type="text" name="text" v-model="tweet_text">
+                        </p>
+                        <button>
+                            <svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0.568848" y="0.180298" width="30.0884" height="30.9626" rx="15.0442" fill="#0EB0E3"/>
+                                <g clip-path="url(#clip0_0_1)">
+                                    <path d="M22.8578 11.2224C22.3337 11.4532 21.7784 11.6055 21.2099 11.6745C21.8085 11.3148 22.2567 10.7506 22.4717 10.0861C21.9169 10.4099 21.3021 10.6455 20.6476 10.7768C20.2158 10.315 19.6436 10.0088 19.0199 9.90557C18.3962 9.80237 17.7558 9.90799 17.1983 10.206C16.6408 10.5041 16.1973 10.9779 15.9366 11.5538C15.676 12.1298 15.6128 12.7757 15.7569 13.3913C13.3711 13.2787 11.2577 12.1324 9.84192 10.4011C9.58455 10.8385 9.45031 11.3374 9.45342 11.8449C9.45342 12.8424 9.96092 13.7191 10.7298 14.2342C10.2741 14.2197 9.82849 14.0965 9.43009 13.8749V13.9099C9.42983 14.5728 9.65891 15.2153 10.0785 15.7286C10.498 16.2418 11.0822 16.5941 11.7319 16.7256C11.3109 16.8384 10.87 16.8554 10.4416 16.7752C10.626 17.3457 10.9839 17.8444 11.4653 18.2017C11.9468 18.5591 12.5278 18.7572 13.1273 18.7684C12.112 19.5652 10.8584 19.9977 9.56775 19.9964C9.34025 19.9964 9.11334 19.9829 8.88525 19.9573C10.2011 20.7998 11.7311 21.247 13.2935 21.2459C18.5744 21.2459 21.459 16.8732 21.459 13.0879C21.459 12.9654 21.459 12.8429 21.4503 12.7204C22.0138 12.3149 22.4998 11.8115 22.8853 11.2341L22.8578 11.2224Z" fill="white"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_0_1">
+                                        <rect width="14" height="14" fill="white" transform="translate(8.88525 8.55664)"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </template>
+
             <div class="admin-twees-bottom">
                 <div class="admin-check">
                     <label>
@@ -145,7 +152,8 @@
                 return {
                     user: @json($user),
                     step: {{ session()->get('step') ?? 1 }},
-                    email: ''
+                    email: '',
+                    tweet_text: "Join My Brigade {{ $user->share_link }}"
                 }
             },
             methods: {
@@ -176,7 +184,23 @@
                                 this.$set(this.user, 'email', data.email)
                             }
                         })
-                }
+                },
+                tweet(){
+                    fetch('/tweet', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ text: this.tweet_text })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if(data.success){
+                                alert('Your email is aaved to your profile, click next to continue')
+                                this.$set(this.user, 'tweet', data.tweet)
+                            }
+                        })
+                },
             }
         })
     </script>

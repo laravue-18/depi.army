@@ -37,7 +37,7 @@ class User extends Authenticatable
         'following_at',
         'join_at',
         'tweet_at',
-        'tweet_id'
+        'tweet'
     ];
 
     protected $guarded = ['referral_link'];

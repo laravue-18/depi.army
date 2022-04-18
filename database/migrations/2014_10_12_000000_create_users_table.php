@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->date('following_at')->nullable();
             $table->date('join_at')->nullable();
             $table->date('tweet_at')->nullable();
-            $table->string('tweet_id')->nullable();
+            $table->string('tweet')->nullable();
             $table->unsignedBigInteger('referrer_id')->nullable();
             $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();

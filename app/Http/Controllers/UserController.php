@@ -150,9 +150,9 @@ class UserController extends Controller
         $response = Http::withToken($user->provider_token)
             ->post("https://api.twitter.com/2/tweets/", [
                 "text" => $text,
-                "media" => [
-                    "media_ids" => ["1515505841700413446"],
-                ]
+//                "media" => [
+//                    "media_ids" => ["1515505841700413446"],
+//                ]
             ])
             ->json();
         if(isset($response['detail'])){
@@ -160,13 +160,12 @@ class UserController extends Controller
         }
         if(isset($response['data']['id'])){
             auth()->user()->update([
-                'tweet_id' => $response['data']['id'],
+                'tweet' => $response['data']['id'],
                 'tweet_at' => now()
             ]);
+            return ["success" => true, "tweet" => $response['data']['id']];
         }
-
-        $step = 3;
-        return view('user.activate')->with(compact('user', 'step'));
+        return ['success' => false];
     }
 
     public function dashboard(){
