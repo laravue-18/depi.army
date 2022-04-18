@@ -77,10 +77,10 @@
             </div>
             <div class="admin-email-box">
                 <template v-if="!user.email">
-                    <form action="addEmail" method="post">
+                    <form action="addEmail" method="post" @submit.prevent="addEmail">
                         @csrf
                         <div class="admin-mail-control">
-                            <input type="text" type="email" placeholder="Enter Email" required>
+                            <input type="text" type="email" placeholder="Enter Email" v-model="email" required>
                             <button type="submit">Submit</button>
                         </div>
                     </form>
@@ -145,12 +145,13 @@
                 return {
                     user: @json($user),
                     step: {{ session()->get('step') ?? 1 }},
+                    email: email
                 }
             },
             methods: {
                 followDepi(){
-                    fetch('/following', {
-                        method: 'POST'
+                    fetch('/addEmail', {
+                        method: 'POST',
                     })
                     .then(res => res.json())
                     .then(data => {
@@ -159,22 +160,21 @@
                             this.$set(this.user, 'following_at', data.following_at)
                         }
                     })
-
+                },
+                addEmail(){
+                    fetch('/following', {
+                        method: 'POST',
+                        body: JSON.stringify({ email: this.email })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if(data.success){
+                                alert('Your email is aaved to your profile, click next to continue')
+                                this.$set(this.user, 'email', data.email)
+                            }
+                        })
                 }
             }
         })
-        $(function () {
-            @if(session()->get('addedEmail'))
-                alert('Your email is aaved to your profile, click next to continue')
-            @endif
-
-            $(".copy-btn").on("click", function () {
-                var input = $(".admin-input input")[0];
-                input.select();
-                input.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(input.value);
-                alert("Copied");
-            });
-        });
     </script>
 @endpush

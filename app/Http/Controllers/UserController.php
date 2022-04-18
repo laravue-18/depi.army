@@ -140,9 +140,8 @@ class UserController extends Controller
         $user->update([
             'email' => $email
         ]);
-        Session::flash('addedEmail', true);
-        $step = 2;
-        return view('user.activate')->with(compact('user', 'step'));
+
+        return ["success" => true, "email" => $email];
     }
 
     public function tweet(Request $request){
