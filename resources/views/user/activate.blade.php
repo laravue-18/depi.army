@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="admin-email-box">
-                <template v-if="user.email">
+                <template v-if="!user.email">
                     <form action="addEmail" method="post">
                         @csrf
                         <div class="admin-mail-control">
