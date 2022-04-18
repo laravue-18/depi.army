@@ -65,17 +65,19 @@
                     <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M26.4453 0.834106H3.23394C1.63816 0.834106 0.347027 2.13974 0.347027 3.73552L0.33252 21.144C0.33252 22.7398 1.63816 24.0455 3.23394 24.0455H26.4453C28.0411 24.0455 29.3467 22.7398 29.3467 21.144V3.73552C29.3467 2.13974 28.0411 0.834106 26.4453 0.834106ZM26.4453 6.63694L14.8396 13.8905L3.23394 6.63694V3.73552L14.8396 10.9891L26.4453 3.73552V6.63694Z" fill="white"/>
                     </svg>
-                    <p>
-                        Add Email <span>(optional)</span>
-                    </p>
                     <template v-if="user.email">
                         <p>@{{ user.email }}</p>
                     </template>
-                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10.3272" cy="10.4984" r="9.9903" fill="#3A3A53"/>
-                        <circle cx="10.3274" cy="6.93221" r="1.05976" transform="rotate(180 10.3274 6.93221)" fill="white"/>
-                        <rect x="11.3872" y="15.1244" width="2.08681" height="6.20198" rx="1.0434" transform="rotate(180 11.3872 15.1244)" fill="white"/>
-                    </svg>
+                    <template v-else>
+                        <p>
+                            Add Email <span>(optional)</span>
+                        </p>
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10.3272" cy="10.4984" r="9.9903" fill="#3A3A53"/>
+                            <circle cx="10.3274" cy="6.93221" r="1.05976" transform="rotate(180 10.3274 6.93221)" fill="white"/>
+                            <rect x="11.3872" y="15.1244" width="2.08681" height="6.20198" rx="1.0434" transform="rotate(180 11.3872 15.1244)" fill="white"/>
+                        </svg>
+                    </template>
                 </div>
             </div>
             <div class="admin-email-box">
@@ -98,7 +100,9 @@
             <img src="/img/tweet.png">
             <template v-if="user.tweet">
                 <div class="admin-tweet-link">
-                    <a class="text-white" :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">@{{ 'https://twitter.com/' + user.username + '/status/' + user.tweet }}</a>
+                    <p>
+                        <a class="text-white" :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">@{{ 'https://twitter.com/' + user.username + '/status/' + user.tweet }}</a>
+                    </p>
                 </div>
             </template>
             <template v-else>
