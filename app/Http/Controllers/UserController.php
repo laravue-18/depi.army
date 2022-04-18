@@ -12,7 +12,7 @@ use Nette\InvalidStateException;
 
 class UserController extends Controller
 {
-    public function welcome(Request $request, $username = null){
+    public function welcome($username = null){
         if($username){
             session(['referrer' => $username]);
         }

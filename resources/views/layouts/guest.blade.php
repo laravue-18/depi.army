@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -147,7 +147,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="footer-logo">
-                    <img src="img/footer-logo.svg" alt="footer logo">
+                    <img src="/img/footer-logo.svg" alt="footer logo">
                     <ul>
                         <li>&#169; Copyright dePi Army </li>
                         <li><a href="#">Privacy Policy</a></li>
@@ -208,7 +208,7 @@
     </div>
 </footer>
 
-<img class="land-back" src="img/land-bg.svg" alt="">
+<img class="land-back" src="/img/land-bg.svg" alt="">
 
 
 <!-- js & plugins -->

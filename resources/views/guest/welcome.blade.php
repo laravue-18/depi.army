@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="join-overlay">
-            <img src="img/join.svg">
+            <img src="/img/join.svg">
         </div>
     </section>
 
@@ -52,10 +52,10 @@
                     <div class="qr-right">
                         <div class="qr-scanner-box">
                             <div class="d-flex justify-content-center">
-                                <img class="qr-img" src="img/qr.svg" alt="qr code img">
+                                <img class="qr-img" src="/img/qr.svg" alt="qr code img">
                             </div>
                             <div class="qr-scanner">
-                                <img src="img/qr-scanner.svg" alt="">
+                                <img src="/img/qr-scanner.svg" alt="">
                             </div>
                             <div class="qr-status">
                                 <div class="qr-status-scroll">
@@ -86,7 +86,7 @@
                         <div class="row">
                             <div class="col-lg-6 order-2 order-lg-1">
                                 <div class="art-img">
-                                    <img src="img/art.svg" alt="">
+                                    <img src="/img/art.svg" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6 order-1 order-lg-2">
@@ -108,7 +108,7 @@
                     </div>
                     <div class="art-circle"></div>
                     <div class="art-dot">
-                        <img src="img/join.svg">
+                        <img src="/img/join.svg">
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                         <div class="nft-card-content">
                             <div class="nft-head-bg"></div>
                             <div class="nft-body">
-                                <img src="img/nft-qr.svg">
+                                <img src="/img/nft-qr.svg">
                                 <div class="nft-body-content">
                                     <h2>Pi Digits</h2>
                                     <p>FROM THE 1,004,676TH DECIMAL OF PI</p>
@@ -181,7 +181,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="info-card">
-                        <img src="img/info-01.svg">
+                        <img src="/img/info-01.svg">
                         <h4>Pi Day Celebrations</h4>
                         <p>Every year on 3.14 we will throw an exclusive members only Pi Day party. There will be
                             many
@@ -190,7 +190,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="info-card">
-                        <img src="img/info-02.svg" class="info-img-fix-1">
+                        <img src="/img/info-02.svg" class="info-img-fix-1">
                         <h4>Voting Rights</h4>
                         <p>All soldiers receive voting rights. Generals command what deciding options will be voted
                             on.
@@ -199,7 +199,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="info-card">
-                        <img src="img/info-03.svg" class="info-img-fix-2">
+                        <img src="/img/info-03.svg" class="info-img-fix-2">
                         <h4>70% Dividends</h4>
                         <p>After the Infinity NFT sale, and all ranked General are earned, we will open up
                             recruiting
@@ -209,7 +209,7 @@
                 </div>
             </div>
             <div class="info-card-dot">
-                <img src="img/join.svg">
+                <img src="/img/join.svg">
             </div>
         </div>
     </section>

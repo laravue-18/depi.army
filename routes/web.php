@@ -29,7 +29,7 @@ Route::middleware('guest')->group(function(){
     Route::post('enlist', [UserController::class, 'enlist']);
     Route::get('login', [UserController::class, 'login'])->name('login');
 
-    Route::get('r/{username}', [UserController::class, 'welcome'])->name('referral');
+    Route::get('/r/{username}', [UserController::class, 'welcome'])->name('referral');
 });
 
 Route::get('/auth/callback/twitter',  [UserController::class, 'callback']);
