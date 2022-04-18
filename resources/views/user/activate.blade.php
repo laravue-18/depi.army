@@ -145,7 +145,7 @@
                 return {
                     user: @json($user),
                     step: {{ session()->get('step') ?? 1 }},
-                    email: email
+                    email: ''
                 }
             },
             methods: {
