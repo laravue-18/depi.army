@@ -150,7 +150,7 @@
             },
             methods: {
                 followDepi(){
-                    fetch('/addEmail', {
+                    fetch('/following', {
                         method: 'POST',
                     })
                     .then(res => res.json())
@@ -162,7 +162,7 @@
                     })
                 },
                 addEmail(){
-                    fetch('/following', {
+                    fetch('/addEmail', {
                         method: 'POST',
                         body: JSON.stringify({ email: this.email })
                     })
