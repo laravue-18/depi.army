@@ -164,6 +164,9 @@
                 addEmail(){
                     fetch('/addEmail', {
                         method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
                         body: JSON.stringify({ email: this.email })
                     })
                         .then(res => res.json())
