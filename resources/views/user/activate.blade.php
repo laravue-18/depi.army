@@ -201,7 +201,7 @@
                         .then(res => res.json())
                         .then(data => {
                             if(data.success){
-                                alert('Your first tweet is tweeted successfully')
+                                alert('Your tweet was posted successfully, now click complete!')
                                 this.$set(this.user, 'tweet', data.tweet)
                             }else{
                                 alert('Failed');
