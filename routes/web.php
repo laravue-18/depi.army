@@ -28,6 +28,8 @@ Route::middleware('guest')->group(function(){
 
     Route::post('enlist', [UserController::class, 'enlist']);
     Route::get('login', [UserController::class, 'login'])->name('login');
+
+    Route::get('r/{username}', [UserController::class, 'welcome'])->name('referral');
 });
 
 Route::get('/auth/callback/twitter',  [UserController::class, 'callback']);
@@ -49,7 +51,5 @@ Route::middleware(['auth'])->group(function(){
         Route::get('stats', [UserController::class, 'stats']);
     });
 
-    Route::get('{username}', [UserController::class, 'profile']);
+    Route::get('u/{username}', [UserController::class, 'profile'])->name('profile');
 });
-
-

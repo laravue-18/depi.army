@@ -90,7 +90,6 @@
                         </div>
                     </form>
                 </template>
-
             </div>
             <template v-if="user.join_at">
                 <a class="window-next" @click.prevent="step++">Next</a>
@@ -204,6 +203,8 @@
                             if(data.success){
                                 alert('Your first tweet is tweeted successfully')
                                 this.$set(this.user, 'tweet', data.tweet)
+                            }else{
+                                alert('Failed');
                             }
                         })
                 },

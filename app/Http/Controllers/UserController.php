@@ -12,9 +12,9 @@ use Nette\InvalidStateException;
 
 class UserController extends Controller
 {
-    public function welcome(Request $request){
-        if($request->has('ref')){
-            session(['referrer' => $request->query('ref')]);
+    public function welcome(Request $request, $username = null){
+        if($username){
+            session(['referrer' => $username]);
         }
 
         return view('guest.welcome');

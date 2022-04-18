@@ -63,11 +63,11 @@ class User extends Authenticatable
     protected $appends = [];
 
     public function getShareLinkAttribute(){
-        return url(auth()->user()->username);
+        return route('profile', $this->username);
     }
 
     public function getReferralLinkAttribute(){
-        return route('welcome', ['ref' => $this->username]);
+        return route('referral', $this->username);
     }
 
     public function referrer(){
