@@ -97,7 +97,9 @@
         <div v-else-if="step==3">
             <img src="/img/tweet.png">
             <template v-if="user.tweet">
-                <a :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">My Tweet</a>
+                <div class="admin-tweet-link">
+                    <a class="text-white" :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">@{{ 'https://twitter.com/' + user.username + '/status/' + user.tweet }}</a>
+                </div>
             </template>
             <template v-else>
                 <form action="tweet" method="post" @submit.prevent="tweet">
@@ -133,7 +135,7 @@
                     </label>
                     <p>I have completed all the tasks to earn my rank as a Lietenant</p>
                 </div>
-                <template v-if="user.tweet_at">
+                <template v-if="user.tweet">
                     <a id="step-next-three" class="window-next" href="/home">Complete</a>
                 </template>
             </div>
@@ -196,7 +198,7 @@
                         .then(res => res.json())
                         .then(data => {
                             if(data.success){
-                                alert('Your email is aaved to your profile, click next to continue')
+                                alert('Your first tweet is tweeted successfully')
                                 this.$set(this.user, 'tweet', data.tweet)
                             }
                         })
