@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -52,4 +53,17 @@ Route::middleware(['auth'])->group(function(){
     });
 
     Route::get('u/{username}', [UserController::class, 'profile'])->name('profile');
+});
+
+Route::prefix('admin')->group(function(){
+    Route::middleware('guest:admin')->group(function(){
+        Route::view('/', 'admin.login');
+        Route::post('/', [AdminController::class, 'login']);
+    });
+
+    Route::middleware('auth:admin')->group(function(){
+        Route::post('logout', [AdminController::class, 'logout']);
+
+        Route::get('dashboard', [AdminController::class, 'dashboard']);
+    });
 });
