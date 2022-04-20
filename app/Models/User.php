@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Http;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -114,34 +115,18 @@ class User extends Authenticatable
             }
         }
 
-        /** Depi Tweets */
-        $response1 = Http::withToken(env('TWITTER_BEARER_TOKEN'))
-            ->get("https://api.twitter.com/2/users/" . $this->provider_id . "/tweets?expansions=referenced_tweets.id.author_id")
-            ->json('includes.tweets');
-        $result['depi_tweets']['retweet_count'] = collect($response1)->where('author_id', env('TWITTER_FOLLOW_ID'))->count();
+        $stat = DB::table('stats')->where('user_id', $this->id)->first();
 
-        $response2 = Http::withToken(env('TWITTER_BEARER_TOKEN'))
-            ->get("https://api.twitter.com/2/users/" . env('TWITTER_FOLLOW_ID') . "/mentions?expansions=author_id")
-            ->json('data');
-        $result['depi_tweets']['reply_count'] = collect($response2)->where('author_id', $this->provider_id)->count();
-
-        $response3 = Http::withToken(env('TWITTER_BEARER_TOKEN'))
-            ->get("https://api.twitter.com/2/users/" . $this->provider_id . "/liked_tweets?expansions=author_id")
-            ->json('data');
-        $result['depi_tweets']['like_count'] = collect($response3)->where('author_id', env('TWITTER_FOLLOW_ID'))->count();
-
-        /** My Tweets */
-        $response = Http::withToken(env('TWITTER_BEARER_TOKEN'))
-            ->get("https://api.twitter.com/2/users/" . $this->provider_id . "/tweets?tweet.fields=public_metrics")
-            ->json('data');
-        $temp = collect($response)->map(function($item){
-            return $item["public_metrics"];
-        });
+        $result['depi_tweets'] = [
+            'retweet_count' => $stat->depi_retweet_count,
+            'reply_count' => $stat->depi_reply_count,
+            'like_count' => $stat->depi_like_count,
+        ];
 
         $result['my_tweets'] = [
-            'retweet_count' => $temp->sum('retweet_count'),
-            'reply_count' => $temp->sum('reply_count'),
-            'like_count' => $temp->sum('like_count'),
+            'retweet_count' => $stat->your_retweet_count,
+            'reply_count' => $stat->your_reply_count,
+            'like_count' => $stat->your_like_count,
         ];
 
         /** Score */
@@ -177,35 +162,4 @@ class User extends Authenticatable
 
         return $result;
     }
-
-    public function getMyTweetsAttribute(){
-//        return ['retweet_count' => 3, 'reply_count' => 2, 'like_count' => 7];
-    }
-
-//    public function getIsFollowedTwitterAttribute(){
-//        $response = Http::withToken(env('TWITTER_BEARER_TOKEN'))
-//            ->get("https://api.twitter.com/2/users/" . $this->provider_id . "/following");
-//        if(isset($response['detail'])) dd($response['detail']);
-//        return $response->collect('data')->contains('id', env('TWITTER_FOLLOW_ID'));
-//    }
-
-//    public function getIsJoinDiscordAttribute(){
-//        $response = Http::withHeaders([
-//            "Authorization" => "Bot " . env("DISCORD_BOT_TOKEN"),
-//            "Content-Type" => "application/json",
-//        ])
-//            ->get("https://discordapp.com/api/guilds/" . env("DISCORD_SERVER_ID") . "/members/" . $this->discord_id)
-//            ->json();
-//
-//        if(isset($response['joined_at'])){
-//            return $response['joined_at'];
-//        }
-//
-//        return false;
-//    }
-
-//    public function getIsTweetAttribute(){
-//        return $this->tweet_id;
-//    }
-
 }
