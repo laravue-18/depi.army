@@ -177,6 +177,19 @@
 @push('scripts')
     <script>
         const circle = document.querySelectorAll(".admin-timeline-circle");
+
+        var barWidth = $(".timeline-bar").attr("data-step");
+        if (barWidth <= 4) {
+            var perStep = barWidth * 12;
+            $(".timeline-bar").css({
+                width: `${perStep}%`,
+            });
+        } else {
+            $(".timeline-bar").css({
+                width: `${100}%`,
+            });
+        }
+
         if (circle) {
             const stepAttr = document.querySelector(".timeline-bar");
             if (stepAttr) {

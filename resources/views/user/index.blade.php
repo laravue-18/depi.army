@@ -202,17 +202,7 @@
                 alert("Copied");
             });
 
-            var barWidth = $(".timeline-bar").attr("data-step");
-            if (barWidth <= 4) {
-                var perStep = barWidth * 12;
-                $(".timeline-bar").css({
-                    width: `${perStep}%`,
-                });
-            } else {
-                $(".timeline-bar").css({
-                    width: `${100}%`,
-                });
-            }
+
 
             $("#step-next-one").on("click", function () {
                 $(".admin-step-one").removeClass("active");
