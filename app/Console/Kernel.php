@@ -57,15 +57,51 @@ class Kernel extends ConsoleKernel
                  $your_reply_count = $temp->sum('reply_count');
                  $your_like_count = $temp->sum('like_count');
 
-                 DB::table('stats')->updateOrInsert([
-                     'user_id' => $user->id,
-                     'depi_retweet_count' => $depi_retweet_count,
-                     'depi_reply_count' => $depi_reply_count,
-                     'depi_like_count' => $depi_like_count,
-                     'your_retweet_count' => $your_retweet_count,
-                     'your_reply_count' => $your_reply_count,
-                     'your_like_count' => $your_like_count,
-                 ]);
+                 DB::table('stats')->updateOrInsert(
+                     ['user_id' => $user->id],
+                     [
+                         'depi_retweet_count' => $depi_retweet_count,
+                         'depi_reply_count' => $depi_reply_count,
+                         'depi_like_count' => $depi_like_count,
+                         'your_retweet_count' => $your_retweet_count,
+                         'your_reply_count' => $your_reply_count,
+                         'your_like_count' => $your_like_count,
+                     ]
+                 );
+             }
+             foreach($users as $user){
+                 $stat = json_decode(json_encode(DB::table('stats')->where('user_id', $user->id)->first()), true);
+                 if( $user->metrics()['rank'] == 'Lieutenant' && !$stat['lieutenant_at']){
+                     DB::table('stats')
+                         ->where('user_id', $user->id)
+                         ->update([
+                             'lieutenant_at' => now()
+                         ]);
+                 }else if( $user->metrics()['rank'] == 'Captain' && !$stat['captain_at']){
+                     DB::table('stats')
+                         ->where('user_id', $user->id)
+                         ->update([
+                             'captain_at' => now()
+                         ]);
+                 }else if( $user->metrics()['rank'] == 'Major' && !$stat['major_at']){
+                     DB::table('stats')
+                         ->where('user_id', $user->id)
+                         ->update([
+                             'major_at' => now()
+                         ]);
+                 }else if( $user->metrics()['rank'] == 'Colonel' && !$stat['colonel_at']){
+                     DB::table('stats')
+                         ->where('user_id', $user->id)
+                         ->update([
+                             'colonel_at' => now()
+                         ]);
+                 }else if( $user->metrics()['rank'] == 'General' && !$stat['general_at']){
+                     DB::table('stats')
+                         ->where('user_id', $user->id)
+                         ->update([
+                             'general_at' => now()
+                         ]);
+                 }
              }
          })->everyMinute();
     }

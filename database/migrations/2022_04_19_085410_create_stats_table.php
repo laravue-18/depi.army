@@ -22,6 +22,11 @@ class CreateStatsTable extends Migration
             $table->integer('your_retweet_count')->default(0);
             $table->integer('your_reply_count')->default(0);
             $table->integer('your_like_count')->default(0);
+            $table->date('lieutenant_at')->nullable();
+            $table->date('captain_at')->nullable();
+            $table->date('major_at')->nullable();
+            $table->date('colonel_at')->nullable();
+            $table->date('general_at')->nullable();
             $table->timestamps();
         });
     }
