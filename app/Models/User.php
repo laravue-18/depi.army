@@ -79,6 +79,10 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'referrer_id', 'id');
     }
 
+    public function stat(){
+        return $this->hasOne(Stat::class);
+    }
+
     public function metrics(){
         $result['score'] = 0;
 

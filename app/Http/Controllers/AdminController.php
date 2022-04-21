@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -25,7 +26,8 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-        return view('admin.dashboard');
+        $users = User::all();
+        return view('admin.dashboard')->with(compact('users'));
     }
 
     public function logout(){
