@@ -22,7 +22,11 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M40.0671 43.3327C40.9314 42.4448 41.4185 41.2406 41.4218 39.9837V5.14422C41.4218 3.88378 40.9353 2.67497 40.0695 1.7837C39.2036 0.892437 38.0292 0.391724 36.8047 0.391724H5.30163C4.07711 0.391724 2.90275 0.892437 2.03688 1.7837C1.17101 2.67497 0.68457 3.88378 0.68457 5.14422V39.9959C0.68784 41.2527 1.17497 42.457 2.03923 43.3448L17.7863 59.5234C18.6524 60.4124 19.8256 60.9117 21.0487 60.9117C22.2719 60.9117 23.4451 60.4124 24.3111 59.5234L40.0671 43.3327ZM21.0487 55.7973L27.7031 48.9593L36.485 39.935V5.32849H5.62134V39.9472L14.4024 48.9707L21.0487 55.7973Z" fill="#BAFFD1"/>
                     </svg>
                     <div class="admin-timeline-circle"></div>
-                    <p>{{ explode("-", $user->stat->lieutenant_at)[1] }}.{{ explode("-", $user->stat->lieutenant_at)[2] }}</p>
+                    <p>
+                        @if($user->stat->lieutenant_at)
+                            {{ explode("-", $user->stat->lieutenant_at)[1] }}.{{ explode("-", $user->stat->lieutenant_at)[2] }}
+                        @endif
+                    </p>
                 </div>
                 <div class="admin-timeline-item">
                     <svg width="42" height="61" viewBox="0 0 42 61" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +34,11 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M40.1999 43.1016C41.0642 42.2137 41.5513 41.0095 41.5546 39.7526V4.91314C41.5546 3.6527 41.0681 2.44389 40.2023 1.55262C39.3364 0.661358 38.162 0.160645 36.9375 0.160645H5.43445C4.20993 0.160645 3.03556 0.661358 2.16969 1.55262C1.30383 2.44389 0.817383 3.6527 0.817383 4.91314V39.7648C0.820653 41.0216 1.30778 42.2259 2.17204 43.1138L17.9191 59.2923C18.7852 60.1814 19.9584 60.6806 21.1815 60.6806C22.4047 60.6806 23.5779 60.1814 24.444 59.2923L40.1999 43.1016ZM21.1815 55.5662L27.836 48.7282L36.6178 39.7039V5.09741H5.75415V39.7161L14.5352 48.7396L21.1815 55.5662Z" fill="#BAFFD1"/>
                     </svg>
                     <div class="admin-timeline-circle"></div>
-                    <p>4.15</p>
+                    <p>
+                        @if($user->stat->captain_at)
+                            {{ explode("-", $user->stat->captain_at)[1] }}.{{ explode("-", $user->stat->captain_at)[2] }}
+                        @endif
+                    </p>
                 </div>
                 <div class="admin-timeline-item">
                     <svg width="41" height="83" viewBox="0 0 41 83" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +46,11 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.9783 0C11.615 0 10.5099 1.10513 10.5099 2.46838C10.5099 3.83163 11.615 4.93677 12.9783 4.93677H25.9658C27.3291 4.93677 28.4342 3.83163 28.4342 2.46838C28.4342 1.10513 27.3291 0 25.9658 0H12.9783ZM1.35466 52.5142L17.1018 68.6928C17.9678 69.5818 19.141 70.0811 20.3642 70.0811C21.5873 70.0811 22.7605 69.5818 23.6266 68.6928L39.3825 52.502C40.2468 51.6142 40.7339 50.4099 40.7372 49.1531V14.3136C40.7372 13.0531 40.2508 11.8443 39.3849 10.953C38.519 10.0618 37.3447 9.56107 36.1201 9.56107H4.61706C3.39254 9.56107 2.21818 10.0618 1.35231 10.953C0.486444 11.8443 0 13.0531 0 14.3136V49.1652C0.00326993 50.4221 0.490401 51.6263 1.35466 52.5142ZM35.8004 49.1044L27.0186 58.1286L20.3641 64.9666L13.7186 58.1409L4.93677 49.1165V14.4978H35.8004V49.1044ZM2.27114 64.3158C3.2351 63.3518 4.79799 63.3518 5.76196 64.3158L18.6278 77.1816C19.5917 78.1456 21.1546 78.1456 22.1186 77.1816L34.9844 64.3158C35.9484 63.3518 37.5113 63.3518 38.4752 64.3158C39.4392 65.2797 39.4392 66.8426 38.4752 67.8066L25.6094 80.6724C22.7175 83.5643 18.0289 83.5643 15.137 80.6724L2.27114 67.8066C1.30717 66.8426 1.30717 65.2797 2.27114 64.3158Z" fill="#3A3A53"/>
                     </svg>
                     <div class="admin-timeline-circle"></div>
-                    <p></p>
+                    <p>
+                        @if($user->stat->major_at)
+                            {{ explode("-", $user->stat->major_at)[1] }}.{{ explode("-", $user->stat->major_at)[2] }}
+                        @endif
+                    </p>
                 </div>
                 <div class="admin-timeline-item">
                     <svg width="67" height="83" viewBox="0 0 67 83" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +77,11 @@
                         </defs>
                     </svg>
                     <div class="admin-timeline-circle"></div>
-                    <p></p>
+                    <p>
+                        @if($user->stat->colonel_at)
+                            {{ explode("-", $user->stat->colonel_at)[1] }}.{{ explode("-", $user->stat->colonel_at)[2] }}
+                        @endif
+                    </p>
                 </div>
                 <div class="admin-timeline-item">
                     <svg width="71" height="83" viewBox="0 0 71 83" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,7 +95,11 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M66.0294 59.626C64.6662 59.626 63.561 58.5208 63.561 57.1576L63.561 44.1701C63.561 42.8068 64.6662 41.7017 66.0294 41.7017C67.3927 41.7017 68.4978 42.8068 68.4978 44.1701L68.4978 57.1576C68.4978 58.5208 67.3927 59.626 66.0294 59.626Z" fill="#3A3A53"/>
                     </svg>
                     <div class="admin-timeline-circle"></div>
-                    <p></p>
+                    <p>
+                        @if($user->stat->general_at)
+                            {{ explode("-", $user->stat->general_at)[1] }}.{{ explode("-", $user->stat->general_at)[2] }}
+                        @endif
+                    </p>
                 </div>
                 <div class="admin-timeline-line">
                     <div class="timeline-bar" data-step="2"></div>
@@ -153,3 +173,23 @@
     </div>
 
 @endsection
+
+@push('scripts')
+    <script>
+        const circle = document.querySelectorAll(".admin-timeline-circle");
+        if (circle) {
+            const stepAttr = document.querySelector(".timeline-bar");
+            if (stepAttr) {
+                const step = stepAttr.getAttribute("data-step");
+                circle.forEach((item, index) => {
+                    if (index >= parseInt(step)) {
+                        item.style.backgroundColor = "none";
+                    } else {
+                        item.style.background =
+                            "linear-gradient(278.88deg, #00DEFC -103.16%, #BAFFD1 72.76%)";
+                    }
+                });
+            }
+        }
+    </script>
+@endpush
