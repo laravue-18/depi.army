@@ -63,7 +63,7 @@
                     </p>
                 </div>
                 <div class="admin-timeline-line">
-                    <div class="timeline-bar" data-step="{{ array_search($metrics['rank'], ['Lieutenant', 'Captain', 'Major', 'Colonel', 'General']) }}"></div>
+                    <div class="timeline-bar" data-step="{{ array_search($metrics['rank'], ['Lieutenant', 'Captain', 'Major', 'Colonel', 'General']) + 1 }}"></div>
                 </div>
             </div>
         </div>

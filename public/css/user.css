@@ -11669,6 +11669,11 @@ a {
     height: 50px
 }
 
+.admin-timeline-item img {
+    margin: 0 auto;
+    height: 50px
+}
+
 .admin-timeline-item p {
     text-align: center;
     font-weight: 600;
