@@ -22,7 +22,7 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M40.0671 43.3327C40.9314 42.4448 41.4185 41.2406 41.4218 39.9837V5.14422C41.4218 3.88378 40.9353 2.67497 40.0695 1.7837C39.2036 0.892437 38.0292 0.391724 36.8047 0.391724H5.30163C4.07711 0.391724 2.90275 0.892437 2.03688 1.7837C1.17101 2.67497 0.68457 3.88378 0.68457 5.14422V39.9959C0.68784 41.2527 1.17497 42.457 2.03923 43.3448L17.7863 59.5234C18.6524 60.4124 19.8256 60.9117 21.0487 60.9117C22.2719 60.9117 23.4451 60.4124 24.3111 59.5234L40.0671 43.3327ZM21.0487 55.7973L27.7031 48.9593L36.485 39.935V5.32849H5.62134V39.9472L14.4024 48.9707L21.0487 55.7973Z" fill="#BAFFD1"/>
                     </svg>
                     <div class="admin-timeline-circle"></div>
-                    <p>{{ \Carbon\Carbon::createFromFormat('m', $user->stat->lieutenant_at) }}.{{ \Carbon\Carbon::createFromFormat('d', $user->stat->lieutenant_at) }}</p>
+                    <p>{{ explode("-", $user->stat->lieutenant_at)[1] }}.{{ explode("-", $user->stat->lieutenant_at)[2] }}</p>
                 </div>
                 <div class="admin-timeline-item">
                     <svg width="42" height="61" viewBox="0 0 42 61" fill="none" xmlns="http://www.w3.org/2000/svg">
