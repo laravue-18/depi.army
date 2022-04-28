@@ -202,8 +202,6 @@
                 alert("Copied");
             });
 
-
-
             $("#step-next-one").on("click", function () {
                 $(".admin-step-one").removeClass("active");
                 $(".follow-step").removeClass("active");
@@ -240,8 +238,6 @@
                 });
             }
         }
-
-
 
     </script>
 @endpush
