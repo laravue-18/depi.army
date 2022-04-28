@@ -18,10 +18,10 @@
         <div class="admin-timeline-small">
             <div class="admin-timeline-area">
                 <div class="admin-timeline-item">
-                    <img src={{"img/lieutenant_sm_" . (!!$user->stat->lieutenant_at) . ".svg"}} alt="">
+                    <img src={{"img/lieutenant_sm_" . (!!$user->stat->lieutenant_at ?? 0) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
-                        @if($user->stat->lieutenant_at)
+                        @if($user->stat->lieutenant_at ?? 0)
                             {{ explode("-", $user->stat->lieutenant_at)[1] }}.{{ explode("-", $user->stat->lieutenant_at)[2] }}
                         @endif
                     </p>
