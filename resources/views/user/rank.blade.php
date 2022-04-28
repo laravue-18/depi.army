@@ -18,46 +18,46 @@
         <div class="admin-timeline-small">
             <div class="admin-timeline-area">
                 <div class="admin-timeline-item">
-                    <img src={{"img/lieutenant_sm_" . (!!$user->stat ? $user->stat->lieutenant_at : 0 ) . ".svg"}} alt="">
+                    <img src={{"img/lieutenant_sm_" . (!!$user->stat ? $user->stat->lieutenant_at : '' ) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
-                        @if($user->stat ? $user->stat->lieutenant_at : 0)
+                        @if($user->stat ? $user->stat->lieutenant_at : '')
                             {{ explode("-", $user->stat->lieutenant_at)[1] }}.{{ explode("-", $user->stat->lieutenant_at)[2] }}
                         @endif
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/captain_sm_" . (!!$user->stat ? $user->stat->captain_at : 0) . ".svg"}} alt="">
+                    <img src={{"img/captain_sm_" . (!!$user->stat ? $user->stat->captain_at : '') . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
-                        @if($user->stat ? $user->stat->captain_at : 0)
+                        @if($user->stat ? $user->stat->captain_at : '')
                             {{ explode("-", $user->stat->captain_at)[1] }}.{{ explode("-", $user->stat->captain_at)[2] }}
                         @endif
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/major_sm_" . (!!$user->stat ? $user->stat->major_at : 0) . ".svg"}} alt="">
+                    <img src={{"img/major_sm_" . (!!$user->stat ? $user->stat->major_at : '') . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
-                        @if($user->stat ? $user->stat->major_at : 0)
+                        @if($user->stat ? $user->stat->major_at : '')
                             {{ explode("-", $user->stat->major_at)[1] }}.{{ explode("-", $user->stat->major_at)[2] }}
                         @endif
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/colonel_sm_" . (!!$user->stat ? $user->stat->colonel_at : 0) . ".svg"}} alt="">
+                    <img src={{"img/colonel_sm_" . (!!$user->stat ? $user->stat->colonel_at : '') . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
-                        @if($user->stat ? $user->stat->colonel_at : 0)
+                        @if($user->stat ? $user->stat->colonel_at : '')
                             {{ explode("-", $user->stat->colonel_at)[1] }}.{{ explode("-", $user->stat->colonel_at)[2] }}
                         @endif
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/general_sm_" . (!!$user->stat ? $user->stat->general_at : 0) . ".svg"}} alt="">
+                    <img src={{"img/general_sm_" . (!!$user->stat ? $user->stat->general_at : '') . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
-                        @if($user->stat ? $user->stat->general_at : 0)
+                        @if($user->stat ? $user->stat->general_at : '')
                             {{ explode("-", $user->stat->general_at)[1] }}.{{ explode("-", $user->stat->general_at)[2] }}
                         @endif
                     </p>
