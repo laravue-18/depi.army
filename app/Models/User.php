@@ -122,15 +122,15 @@ class User extends Authenticatable
         $stat = DB::table('stats')->where('user_id', $this->id)->first();
 
         $result['depi_tweets'] = [
-            'retweet_count' => $stat->depi_retweet_count,
-            'reply_count' => $stat->depi_reply_count,
-            'like_count' => $stat->depi_like_count,
+            'retweet_count' => $stat ? $stat->depi_retweet_count : 0,
+            'reply_count' => $stat ? $stat->depi_reply_count : 0,
+            'like_count' => $stat ? $stat->depi_like_count : 0,
         ];
 
         $result['my_tweets'] = [
-            'retweet_count' => $stat->your_retweet_count,
-            'reply_count' => $stat->your_reply_count,
-            'like_count' => $stat->your_like_count,
+            'retweet_count' => $stat ? $stat->your_retweet_count : 0,
+            'reply_count' => $stat ? $stat->your_reply_count : 0,
+            'like_count' => $stat ? $stat->your_like_count : 0,
         ];
 
         /** Score */
