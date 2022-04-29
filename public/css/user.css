@@ -11695,7 +11695,7 @@ a {
     background-color: #3A3A53;
     width: calc(100% - 30px);
     position: absolute;
-    bottom: 70px;
+    top: 90px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -9

@@ -4,10 +4,10 @@
 <div class="admin-content">
     <div class="admin-base">
         <div class="admin-base-logo">
-            <img src="img/{{ $metrics['rank'] }}.svg" alt="">
+            <img src="img/{{ $rank }}.svg" alt="">
             <div>
                 <p>My Rank</p>
-                <h2>{{ $metrics['rank'] }}</h2>
+                <h2>{{ $rank }}</h2>
             </div>
         </div>
     </div>
