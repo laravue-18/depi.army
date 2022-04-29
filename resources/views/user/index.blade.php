@@ -1,5 +1,10 @@
 @extends('layouts.user')
 
+@php
+    $ranks = ['Lieutenant', 'Captain', 'Major', 'Colonel', 'General'];
+    $rank = $metrics['rank'];
+@endphp
+
 @section('content')
 <div class="admin-content">
     <div class="admin-base">
