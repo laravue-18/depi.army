@@ -3,15 +3,16 @@
 @php
     $ranks = ['Lieutenant', 'Captain', 'Major', 'Colonel', 'General'];
     $rank = $metrics['rank'];
+    $rankNumber = array_search($rank, $ranks);
 @endphp
 
 @section('content')
     <!-- admin content -->
     <div class="admin-content">
         <div class="admin-base-logo">
-            <img src="img/{{ $metrics['rank'] }}.svg" alt="">
+            <img src="img/{{ $rank }}.svg" alt="">
             <div>
-                <h2>{{ $metrics['rank'] }}</h2>
+                <h2>{{ $rank }}</h2>
             </div>
         </div>
         <div class="admin-timeline">
@@ -23,7 +24,7 @@
         <div class="admin-timeline-small">
             <div class="admin-timeline-area">
                 <div class="admin-timeline-item">
-                    <img src={{"img/lieutenant_sm_" . ($user->stat ? !!$user->stat->lieutenant_at : '' ) . ".svg"}} alt="">
+                    <img src={{"img/lieutenant_sm_" . ( $rankNumber >= 0 ) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
                         @if($user->stat ? $user->stat->lieutenant_at : '')
@@ -32,7 +33,7 @@
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/captain_sm_" . ($user->stat ? !!$user->stat->captain_at : '') . ".svg"}} alt="">
+                    <img src={{"img/captain_sm_" . ($rankNumber >= 1) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
                         @if($user->stat ? $user->stat->captain_at : '')
@@ -41,7 +42,7 @@
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/major_sm_" . ($user->stat ? !!$user->stat->major_at : '') . ".svg"}} alt="">
+                    <img src={{"img/major_sm_" . ($rankNumber >= 2) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
                         @if($user->stat ? $user->stat->major_at : '')
@@ -50,7 +51,7 @@
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/colonel_sm_" . ($user->stat ? !!$user->stat->colonel_at : '') . ".svg"}} alt="">
+                    <img src={{"img/colonel_sm_" . ( $rankNumber >= 3 ) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
                         @if($user->stat ? $user->stat->colonel_at : '')
@@ -59,7 +60,7 @@
                     </p>
                 </div>
                 <div class="admin-timeline-item">
-                    <img src={{"img/general_sm_" . ($user->stat ? !!$user->stat->general_at : '') . ".svg"}} alt="">
+                    <img src={{"img/general_sm_" . ($rankNumber >= 4) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
                         @if($user->stat ? $user->stat->general_at : '')
@@ -144,17 +145,7 @@
     <script>
         const circle = document.querySelectorAll(".admin-timeline-circle");
 
-        var barWidth = $(".timeline-bar").attr("data-step");
-        if (barWidth <= 4) {
-            var perStep = barWidth * 12;
-            $(".timeline-bar").css({
-                width: `${perStep}%`,
-            });
-        } else {
-            $(".timeline-bar").css({
-                width: `${100}%`,
-            });
-        }
+        $(".timeline-bar").css({ width: "{{ $rankNumber * 25 }}%" });
 
         if (circle) {
             const stepAttr = document.querySelector(".timeline-bar");
