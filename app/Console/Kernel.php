@@ -47,15 +47,28 @@ class Kernel extends ConsoleKernel
 
                  /** My Tweets */
                  $response = Http::withToken(env('TWITTER_BEARER_TOKEN'))
-                     ->get("https://api.twitter.com/2/users/" . $user->provider_id . "/tweets?tweet.fields=public_metrics")
+                     ->get("https://api.twitter.com/2/users/" . $user->provider_id . "/tweets?tweet.fields=entities,public_metrics")
                      ->json('data');
-                 $temp = collect($response)->map(function($item){
-                     return $item["public_metrics"];
-                 });
+                 $v3 = collect($response)
+                     ->filter(function($item){
+                        $v1 = isset($item['entities']['hashtags']) ?
+                            collect($item['entities']['hashtags'])
+                                ->map(function($j){
+                                    return $j['tag'];
+                                })
+                            : collect([]);
 
-                 $your_retweet_count = $temp->sum('retweet_count');
-                 $your_reply_count = $temp->sum('reply_count');
-                 $your_like_count = $temp->sum('like_count');
+                        $v2 = $v1->contains('depi_army');
+                        return $v2;
+                     });
+
+                 $v4 = $v3->map(function($item){
+                         return $item["public_metrics"];
+                     });
+
+                 $your_retweet_count = $v4->sum('retweet_count');
+                 $your_reply_count = $v4->sum('reply_count');
+                 $your_like_count = $v4->sum('like_count');
 
                  DB::table('stats')->updateOrInsert(
                      ['user_id' => $user->id],
