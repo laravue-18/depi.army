@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/style.css">
+
+    @stack('css')
 </head>
 
 <body>
