@@ -147,12 +147,17 @@ class UserController extends Controller
     public function tweet(Request $request){
         $text = $request->input('text');
         $user = auth()->user();
+//        $response = Http::withToken($user->provider_token)
+//            ->post("https://api.twitter.com/2/tweets/", [
+//                "text" => $text,
+////                "media" => [
+////                    "media_ids" => ["1515505841700413446"],
+////                ]
+//            ])
+//            ->json();
         $response = Http::withToken($user->provider_token)
-            ->post("https://api.twitter.com/2/tweets/", [
-                "text" => $text,
-//                "media" => [
-//                    "media_ids" => ["1515505841700413446"],
-//                ]
+            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/retweets", [
+                "tweet_id" => "1516617212483702788"
             ])
             ->json();
         if(isset($response['detail'])){
