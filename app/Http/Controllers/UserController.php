@@ -170,8 +170,13 @@ class UserController extends Controller
 //            ]);
 //            return ["success" => true, "tweet" => $response['data']['id']];
 //        }
-        if(isset($response['data']['retweeted']))
-            return ['success' => $response['data']['retweeted']];
+        if(isset($response['data']['retweeted'])){
+            auth()->user()->update([
+                'tweet' => "1516617212483702788",
+                'tweet_at' => now()
+            ]);
+            return ['success' => $response['data']['retweeted'], "tweet" => "1516617212483702788"];
+        }
         return ['success' => false];
     }
 
