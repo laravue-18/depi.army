@@ -170,8 +170,8 @@ class UserController extends Controller
 //            ]);
 //            return ["success" => true, "tweet" => $response['data']['id']];
 //        }
-        if(isset($response['retweeted']))
-            return ['success' => $response['retweeted']];
+        if(isset($response['data']['retweeted']))
+            return ['success' => $response['data']['retweeted']];
         return ['success' => false];
     }
 
