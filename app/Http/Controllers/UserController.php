@@ -160,16 +160,18 @@ class UserController extends Controller
                 "tweet_id" => "1516617212483702788"
             ])
             ->json();
-        if(isset($response['detail'])){
-            $request->session()->flash("error", $response['detail']);
-        }
-        if(isset($response['data']['id'])){
-            auth()->user()->update([
-                'tweet' => $response['data']['id'],
-                'tweet_at' => now()
-            ]);
-            return ["success" => true, "tweet" => $response['data']['id']];
-        }
+//        if(isset($response['detail'])){
+//            $request->session()->flash("error", $response['detail']);
+//        }
+//        if(isset($response['data']['id'])){
+//            auth()->user()->update([
+//                'tweet' => $response['data']['id'],
+//                'tweet_at' => now()
+//            ]);
+//            return ["success" => true, "tweet" => $response['data']['id']];
+//        }
+        if(isset($response['retweeted']))
+            return ['success' => $response['retweeted']];
         return ['success' => false];
     }
 
