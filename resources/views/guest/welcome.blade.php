@@ -137,7 +137,7 @@
                 <div class="col-lg-5 order-2 order-lg-1">
                     <div class="nft-card">
                         <ul>
-                            <li>Regeneration <span class="seqNum">10</span></li>
+                            <li>Regeneration <span class="seqNum">0</span></li>
                             <li><svg width="19" height="18" viewBox="0 0 19 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -157,7 +157,7 @@
 {{--                                <img src="/img/nft-qr.svg">--}}
                                 <div class="nft-body-content">
                                     <h2>Pi Digits</h2>
-                                    <p>FROM THE <span class="seqNum"></span>TH DECIMAL OF PI</p>
+                                    <p>FROM THE <span class="digitNum"></span>TH DECIMAL OF PI</p>
                                     <h4 class="colorDigits">820931840573</h4>
                                     <div class="nft-color">
                                         <ul>
@@ -359,8 +359,9 @@
             }
 
             function generateQrCode(){
-                $('.seqNum').text(seqNumVal * 12)
                 colors = pi.substr(seqNumVal * 12, 12);
+                $('.seqNum').text(seqNumVal)
+                $('.digitNum').text(seqNumVal * 12)
                 $('.colorDigits').text(colors)
                 color1 = colors.substr(0, 6);
                 $('.color1Digits').text('#' + color1).prev().css('background','#'+color1)
