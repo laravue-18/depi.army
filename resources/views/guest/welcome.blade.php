@@ -157,7 +157,7 @@
 {{--                                <img src="/img/nft-qr.svg">--}}
                                 <div class="nft-body-content">
                                     <h2>Pi Digits</h2>
-                                    <p>FROM THE <span class="seqNum"></span> TH DECIMAL OF PI</p>
+                                    <p>FROM THE <span class="seqNum"></span>TH DECIMAL OF PI</p>
                                     <h4 class="colorDigits">820931840573</h4>
                                     <div class="nft-color">
                                         <ul>
@@ -359,7 +359,7 @@
             }
 
             function generateQrCode(){
-                $('.seqNum').text(seqNumVal)
+                $('.seqNum').text(seqNumVal * 12)
                 colors = pi.substr(seqNumVal * 12, 12);
                 $('.colorDigits').text(colors)
                 color1 = colors.substr(0, 6);
