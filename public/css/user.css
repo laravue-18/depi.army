@@ -12411,6 +12411,10 @@ a {
     color: #12111B
 }
 
+.admin-timeline-item img{
+    height: 50px !important;
+}
+
 @media all and (max-width: 1200px) {
     .admin-base-logo,.admin-brigade-content {
         margin-bottom:1rem
