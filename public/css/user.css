@@ -4,10 +4,6 @@
 * Copyright 2011-2021 Twitter, Inc.
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
-*,.window-next,::after,::before {
-    box-sizing: border-box
-}
-
 .popover,.tooltip,address {
     font-style: normal
 }
@@ -16,7 +12,7 @@
     word-break: normal
 }
 
-.card,.popover,.toast-body,.tooltip,code {
+.card,code {
     word-wrap: break-word
 }
 
@@ -28,13 +24,8 @@ label,output {
     display: inline-block
 }
 
-.badge,progress,sub,sup {
+progress,sub,sup {
     vertical-align: baseline
-}
-
-.img-fluid,.img-thumbnail {
-    max-width: 100%;
-    height: auto
 }
 
 :root {
@@ -91,6 +82,10 @@ label,output {
     --bs-body-bg: #fff
 }
 
+*,::after,::before {
+    box-sizing: border-box
+}
+
 @media (prefers-reduced-motion:no-preference) {
     :root {
         scroll-behavior: smooth
@@ -118,6 +113,11 @@ hr {
 
 hr:not([size]) {
     height: 1px
+}
+
+.img-fluid,.img-thumbnail {
+    max-width: 100%;
+    height: auto
 }
 
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
@@ -291,7 +291,7 @@ code {
     color: #d63384
 }
 
-.alert-heading,a>code {
+a>code {
     color: inherit
 }
 
@@ -429,11 +429,6 @@ legend+* {
     -webkit-appearance: button
 }
 
-.form-control,.form-select {
-    -webkit-appearance: none;
-    -moz-appearance: none
-}
-
 ::file-selector-button {
     font: inherit
 }
@@ -451,7 +446,7 @@ summary {
     display: none!important
 }
 
-.btn,.figure,.form-check-inline,.list-inline-item {
+.figure,.form-check-inline,.list-inline-item {
     display: inline-block
 }
 
@@ -607,10 +602,6 @@ summary {
     }
 }
 
-.invalid-tooltip,.offcanvas,.row>*,.toast,.toast-container,.valid-tooltip {
-    max-width: 100%
-}
-
 .row {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -624,6 +615,7 @@ summary {
 .row>* {
     flex-shrink: 0;
     width: 100%;
+    max-width: 100%;
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
     margin-top: var(--bs-gutter-y)
@@ -2092,20 +2084,25 @@ summary {
     color: #6c757d
 }
 
+.form-control,.form-select {
+    font-size: 1rem;
+    line-height: 1.5;
+    -moz-appearance: none;
+    display: block;
+    font-weight: 400
+}
+
 .form-control,.form-control:focus {
     color: #212529;
     background-color: #fff
 }
 
 .form-control {
-    display: block;
     width: 100%;
     padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
     background-clip: padding-box;
     border: 1px solid #ced4da;
+    -webkit-appearance: none;
     appearance: none;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
@@ -2241,12 +2238,6 @@ summary {
     border-radius: .3rem
 }
 
-.invalid-tooltip,.valid-tooltip {
-    border-radius: .25rem;
-    position: absolute;
-    top: 100%
-}
-
 .form-control-lg::file-selector-button {
     padding: .5rem 1rem;
     margin: -.5rem -1rem;
@@ -2288,13 +2279,9 @@ textarea.form-control-lg {
 }
 
 .form-select {
-    display: block;
     width: 100%;
     padding: .375rem 2.25rem .375rem .75rem;
     -moz-padding-start: calc(.75rem - 3px);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
     color: #212529;
     background-color: #fff;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
@@ -2304,6 +2291,7 @@ textarea.form-control-lg {
     border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
     appearance: none
 }
 
@@ -2721,17 +2709,17 @@ textarea.form-control-lg {
 }
 
 .valid-tooltip {
+    position: absolute;
+    top: 100%;
     z-index: 5;
     display: none;
+    max-width: 100%;
     padding: .25rem .5rem;
     margin-top: .1rem;
     font-size: .875rem;
     color: #fff;
-    background-color: rgba(25,135,84,.9)
-}
-
-.btn-group-vertical>.btn-check:checked+.btn,.btn-group-vertical>.btn-check:focus+.btn,.btn-group-vertical>.btn.active,.btn-group-vertical>.btn:active,.btn-group-vertical>.btn:focus,.btn-group-vertical>.btn:hover,.btn-group>.btn-check:checked+.btn,.btn-group>.btn-check:focus+.btn,.btn-group>.btn.active,.btn-group>.btn:active,.btn-group>.btn:focus,.btn-group>.btn:hover,.input-group .form-control.is-valid,.input-group .form-select.is-valid,.was-validated .input-group .form-control:valid,.was-validated .input-group .form-select:valid {
-    z-index: 1
+    background-color: rgba(25,135,84,.9);
+    border-radius: .25rem
 }
 
 .is-valid~.valid-feedback,.is-valid~.valid-tooltip,.was-validated :valid~.valid-feedback,.was-validated :valid~.valid-tooltip {
@@ -2793,6 +2781,10 @@ textarea.form-control-lg {
     margin-left: .5em
 }
 
+.input-group .form-control.is-valid,.input-group .form-select.is-valid,.was-validated .input-group .form-control:valid,.was-validated .input-group .form-select:valid {
+    z-index: 1
+}
+
 .input-group .form-control.is-valid:focus,.input-group .form-select.is-valid:focus,.was-validated .input-group .form-control:valid:focus,.was-validated .input-group .form-select:valid:focus {
     z-index: 3
 }
@@ -2806,13 +2798,17 @@ textarea.form-control-lg {
 }
 
 .invalid-tooltip {
+    position: absolute;
+    top: 100%;
     z-index: 5;
     display: none;
+    max-width: 100%;
     padding: .25rem .5rem;
     margin-top: .1rem;
     font-size: .875rem;
     color: #fff;
-    background-color: rgba(220,53,69,.9)
+    background-color: rgba(220,53,69,.9);
+    border-radius: .25rem
 }
 
 .accordion-button:hover,.input-group .form-control.is-invalid,.input-group .form-select.is-invalid,.was-validated .input-group .form-control:invalid,.was-validated .input-group .form-select:invalid {
@@ -2853,6 +2849,11 @@ textarea.form-control-lg {
     background-size: 16px 12px,calc(.75em + .375rem) calc(.75em + .375rem)
 }
 
+.btn,.page-link {
+    text-decoration: none;
+    padding: .375rem .75rem
+}
+
 .form-select.is-invalid:focus,.was-validated .form-select:invalid:focus {
     border-color: #dc3545;
     box-shadow: 0 0 0 .25rem rgba(220,53,69,.25)
@@ -2887,15 +2888,14 @@ textarea.form-control-lg {
 }
 
 .btn {
+    display: inline-block;
     font-weight: 400;
     text-align: center;
-    text-decoration: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
     background-color: transparent;
     border: 1px solid transparent;
-    padding: .375rem .75rem;
     font-size: 1rem;
     border-radius: .25rem
 }
@@ -3701,6 +3701,10 @@ textarea.form-control-lg {
     flex: 1 1 auto
 }
 
+.btn-group-vertical>.btn-check:checked+.btn,.btn-group-vertical>.btn-check:focus+.btn,.btn-group-vertical>.btn.active,.btn-group-vertical>.btn:active,.btn-group-vertical>.btn:focus,.btn-group-vertical>.btn:hover,.btn-group>.btn-check:checked+.btn,.btn-group>.btn-check:focus+.btn,.btn-group>.btn.active,.btn-group>.btn:active,.btn-group>.btn:focus,.btn-group>.btn:hover {
+    z-index: 1
+}
+
 .btn-toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -4302,9 +4306,8 @@ textarea.form-control-lg {
     transform: none
 }
 
-.accordion-button,.card {
-    background-color: #fff;
-    display: flex
+.accordion-button,.alert,.btn .badge,.card,.page-link {
+    position: relative
 }
 
 .navbar-expand .offcanvas-bottom,.navbar-expand .offcanvas-top {
@@ -4318,10 +4321,6 @@ textarea.form-control-lg {
     flex-grow: 0;
     padding: 0;
     overflow-y: visible
-}
-
-.card,.progress-bar {
-    flex-direction: column
 }
 
 .navbar-light .navbar-brand,.navbar-light .navbar-brand:focus,.navbar-light .navbar-brand:hover {
@@ -4399,15 +4398,13 @@ textarea.form-control-lg {
 }
 
 .card {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     min-width: 0;
+    background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem
-}
-
-.card-footer,.card-header {
-    background-color: rgba(0,0,0,.03)
 }
 
 .card>hr {
@@ -4440,11 +4437,16 @@ textarea.form-control-lg {
     padding: 1rem
 }
 
+.card-footer,.card-header {
+    padding: .5rem 1rem;
+    background-color: rgba(0,0,0,.03)
+}
+
 .card-title {
     margin-bottom: .5rem
 }
 
-.accordion-header,.card-header,.card-subtitle,.card-text:last-child {
+.card-header,.card-subtitle,.card-text:last-child {
     margin-bottom: 0
 }
 
@@ -4462,7 +4464,6 @@ textarea.form-control-lg {
 }
 
 .card-header {
-    padding: .5rem 1rem;
     border-bottom: 1px solid rgba(0,0,0,.125)
 }
 
@@ -4471,7 +4472,6 @@ textarea.form-control-lg {
 }
 
 .card-footer {
-    padding: .5rem 1rem;
     border-top: 1px solid rgba(0,0,0,.125)
 }
 
@@ -4496,10 +4496,6 @@ textarea.form-control-lg {
     left: 0;
     padding: 1rem;
     border-radius: calc(.25rem - 1px)
-}
-
-.accordion-button,.alert,.btn .badge,.list-group-item,.page-link {
-    position: relative
 }
 
 .accordion-body,.accordion-button {
@@ -4560,10 +4556,12 @@ textarea.form-control-lg {
 }
 
 .accordion-button {
+    display: flex;
     align-items: center;
     font-size: 1rem;
     color: #212529;
     text-align: left;
+    background-color: #fff;
     border: 0;
     border-radius: 0;
     overflow-anchor: none;
@@ -4580,6 +4578,10 @@ textarea.form-control-lg {
     color: #0c63e4;
     background-color: #e7f1ff;
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.125)
+}
+
+.accordion-item,.page-link {
+    background-color: #fff
 }
 
 .accordion-button:focus,.btn-close:focus,.page-link:focus {
@@ -4615,13 +4617,16 @@ textarea.form-control-lg {
     border-color: #86b7fe
 }
 
-.alert,.breadcrumb {
-    margin-bottom: 1rem
+.accordion-item,.list-group-item {
+    border: 1px solid rgba(0,0,0,.125)
 }
 
-.accordion-item {
-    background-color: #fff;
-    border: 1px solid rgba(0,0,0,.125)
+.accordion-header {
+    margin-bottom: 0
+}
+
+.alert,.breadcrumb {
+    margin-bottom: 1rem
 }
 
 .accordion-item:first-of-type {
@@ -4697,10 +4702,6 @@ textarea.form-control-lg {
     color: #6c757d
 }
 
-.link-primary,.page-link {
-    color: #0d6efd
-}
-
 .pagination {
     display: flex;
     padding-left: 0;
@@ -4709,11 +4710,9 @@ textarea.form-control-lg {
 
 .page-link {
     display: block;
-    text-decoration: none;
-    background-color: #fff;
+    color: #0d6efd;
     border: 1px solid #dee2e6;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    padding: .375rem .75rem
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
 
 .page-link:focus,.page-link:hover {
@@ -4754,6 +4753,12 @@ textarea.form-control-lg {
     border-color: #dee2e6
 }
 
+.badge,.progress-bar {
+    color: #fff;
+    text-align: center;
+    white-space: nowrap
+}
+
 .page-item:first-child .page-link {
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem
@@ -4769,10 +4774,6 @@ textarea.form-control-lg {
     font-size: 1.25rem
 }
 
-.pagination-sm .page-link,.popover,.toast,.tooltip {
-    font-size: .875rem
-}
-
 .pagination-lg .page-item:first-child .page-link {
     border-top-left-radius: .3rem;
     border-bottom-left-radius: .3rem
@@ -4784,7 +4785,8 @@ textarea.form-control-lg {
 }
 
 .pagination-sm .page-link {
-    padding: .25rem .5rem
+    padding: .25rem .5rem;
+    font-size: .875rem
 }
 
 .pagination-sm .page-item:first-child .page-link {
@@ -4802,9 +4804,7 @@ textarea.form-control-lg {
     padding: .35em .65em;
     font-size: .75em;
     line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
+    vertical-align: baseline;
     border-radius: .25rem
 }
 
@@ -4825,6 +4825,10 @@ textarea.form-control-lg {
 .list-group,.progress {
     display: flex;
     border-radius: .25rem
+}
+
+.alert-heading {
+    color: inherit
 }
 
 .alert-dismissible {
@@ -4939,12 +4943,19 @@ textarea.form-control-lg {
 
 .progress-bar {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
     background-color: #0d6efd;
     transition: width .6s ease
+}
+
+.popover,.tooltip {
+    letter-spacing: normal;
+    white-space: normal;
+    line-break: auto;
+    font-size: .875rem;
+    word-wrap: break-word;
+    text-decoration: none
 }
 
 .progress-bar-striped {
@@ -5003,12 +5014,12 @@ textarea.form-control-lg {
 }
 
 .list-group-item {
+    position: relative;
     display: block;
     padding: .5rem 1rem;
     color: #212529;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid rgba(0,0,0,.125)
+    background-color: #fff
 }
 
 .list-group-item:first-child {
@@ -5405,6 +5416,8 @@ textarea.form-control-lg {
 
 .toast {
     width: 350px;
+    max-width: 100%;
+    font-size: .875rem;
     pointer-events: auto;
     border: 1px solid rgba(0,0,0,.1);
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
@@ -5415,6 +5428,7 @@ textarea.form-control-lg {
     width: -webkit-max-content;
     width: -moz-max-content;
     width: max-content;
+    max-width: 100%;
     pointer-events: none
 }
 
@@ -5434,7 +5448,8 @@ textarea.form-control-lg {
 }
 
 .toast-body {
-    padding: .75rem
+    padding: .75rem;
+    word-wrap: break-word
 }
 
 .modal {
@@ -5735,13 +5750,9 @@ textarea.form-control-lg {
     font-weight: 400;
     text-align: left;
     text-align: start;
-    text-decoration: none;
     text-shadow: none;
     text-transform: none;
-    letter-spacing: normal;
     word-spacing: normal;
-    white-space: normal;
-    line-break: auto;
     opacity: 0
 }
 
@@ -5843,13 +5854,9 @@ textarea.form-control-lg {
     font-weight: 400;
     text-align: left;
     text-align: start;
-    text-decoration: none;
     text-shadow: none;
     text-transform: none;
-    letter-spacing: normal;
     word-spacing: normal;
-    white-space: normal;
-    line-break: auto;
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: .3rem
@@ -6240,6 +6247,7 @@ textarea.form-control-lg {
     z-index: 1045;
     display: flex;
     flex-direction: column;
+    max-width: 100%;
     visibility: hidden;
     background-color: #fff;
     background-clip: padding-box;
@@ -6253,6 +6261,10 @@ textarea.form-control-lg {
     }
 }
 
+.admin-content button,.admin-mail-control button,.admin-media a svg path,.admin-share-icon a svg path,.admin-tweet-link svg rect,.admin-window-step a,.timeline-bar,.window-next {
+    transition: all .3s
+}
+
 .offcanvas-backdrop {
     position: fixed;
     top: 0;
@@ -6264,10 +6276,9 @@ textarea.form-control-lg {
 }
 
 .offcanvas-bottom,.offcanvas-top {
-    right: 0;
-    left: 0;
     height: 30vh;
-    max-height: 100%
+    max-height: 100%;
+    right: 0
 }
 
 .placeholder,.vr {
@@ -6323,11 +6334,13 @@ textarea.form-control-lg {
 
 .offcanvas-top {
     top: 0;
+    left: 0;
     border-bottom: 1px solid rgba(0,0,0,.2);
     transform: translateY(-100%)
 }
 
 .offcanvas-bottom {
+    left: 0;
     border-top: 1px solid rgba(0,0,0,.2);
     transform: translateY(100%)
 }
@@ -6408,6 +6421,10 @@ textarea.form-control-lg {
 
 .clearfix::after {
     clear: both
+}
+
+.link-primary {
+    color: #0d6efd
 }
 
 .link-primary:focus,.link-primary:hover {
@@ -6492,13 +6509,6 @@ textarea.form-control-lg {
     height: 100%
 }
 
-.fixed-bottom,.fixed-top {
-    position: fixed;
-    z-index: 1030;
-    right: 0;
-    left: 0
-}
-
 .ratio-1x1 {
     --bs-aspect-ratio: 100%
 }
@@ -6516,11 +6526,19 @@ textarea.form-control-lg {
 }
 
 .fixed-top {
-    top: 0
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030
 }
 
 .fixed-bottom {
-    bottom: 0
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030
 }
 
 .sticky-top {
@@ -11292,10 +11310,6 @@ body {
     background-color: #191923
 }
 
-.admin-base-logo h2,.admin-share h2 {
-    font-family: NHaasGroteskDSPro-55Rg
-}
-
 body,html {
     overflow-x: hidden
 }
@@ -11324,13 +11338,17 @@ a {
     padding: 70px
 }
 
+.admin-benefit-card-box,.admin-media {
+    padding-top: 40px
+}
+
 .admin-slidebar .admin-bg {
     position: absolute;
     bottom: 0;
     left: 0
 }
 
-.admin-bar,.admin-media,.admin-menu {
+.admin-bar,.admin-media,.admin-menu,.admin-timeline,.admin-timeline-bar {
     position: relative
 }
 
@@ -11345,12 +11363,10 @@ a {
     z-index: 9
 }
 
-.admin-menu a, .admin-menu button{
+.admin-menu a {
     font-size: 18px;
     line-height: 22px;
-    color: #9EA5CD;
-    border: none;
-    background: transparent;
+    color: #9EA5CD
 }
 
 .admin-menu a.active,.admin-menu a:hover {
@@ -11360,12 +11376,7 @@ a {
 .admin-media {
     z-index: 9;
     display: flex;
-    gap: 16px;
-    padding-top: 40px
-}
-
-.admin-media a svg path {
-    transition: all .3s
+    gap: 16px
 }
 
 .admin-media a:hover svg path {
@@ -11394,7 +11405,8 @@ a {
     background-clip: text;
     font-weight: 700;
     font-size: 36px;
-    line-height: 87.19%
+    line-height: 87.19%;
+    font-family: NHaasGroteskDSPro-55Rg
 }
 
 .mobile-header {
@@ -11435,12 +11447,9 @@ a {
     margin-bottom: 51px
 }
 
-.admin-bar,.admin-base-score {
-    display: flex;
-    align-items: center
-}
-
 .admin-base-score {
+    display: flex;
+    align-items: center;
     gap: 18px
 }
 
@@ -11448,6 +11457,8 @@ a {
     height: 4px;
     width: 64px;
     background-color: #525266;
+    display: flex;
+    align-items: center;
     gap: 10px;
     overflow: hidden;
     border-radius: 10px
@@ -11469,10 +11480,9 @@ a {
     border-radius: 10px
 }
 
-.admin-base-info h2,.state-score h2:last-of-type {
+.admin-base-info h2,.state-score h2:last-of-type,.state-score-card table thead th:first-child {
     background: linear-gradient(266.71deg,#00DEFC -5.76%,#BADAFF 96.14%);
-    -webkit-text-fill-color: transparent;
-    font-style: italic
+    -webkit-text-fill-color: transparent
 }
 
 .admin-base-info h4 {
@@ -11483,6 +11493,7 @@ a {
 }
 
 .admin-base-info h2 {
+    font-style: italic;
     font-weight: 700;
     font-size: 36px;
     line-height: 43px;
@@ -11491,13 +11502,16 @@ a {
     font-family: NHaasGroteskDSPro-66MdIt
 }
 
-.admin-input {
+.admin-input,.admin-timeline-bar {
     background-color: #12111B;
+    border-radius: 10px
+}
+
+.admin-input {
     height: 64.89px;
     width: 522px;
     justify-content: space-between;
-    padding: 0 28px;
-    border-radius: 10px
+    padding: 0 28px
 }
 
 .admin-input input {
@@ -11519,10 +11533,6 @@ a {
     gap: 1rem
 }
 
-.admin-share-icon a svg path {
-    transition: all .3s
-}
-
 .admin-share-icon a:hover:first-of-type svg path {
     stroke: #9EA5CD
 }
@@ -11539,7 +11549,8 @@ a {
     font-weight: 600;
     font-size: 36px;
     line-height: 43px;
-    color: #FFF
+    color: #FFF;
+    font-family: NHaasGroteskDSPro-55Rg
 }
 
 .admin-share p {
@@ -11551,9 +11562,9 @@ a {
 }
 
 .admin-brigade-content h4:first-of-type,.admin-brigade-content h4:last-of-type {
-    font-weight: 600;
-    line-height: 29px;
     font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
     font-family: NHaasGroteskDSPro-55Rg
 }
 
@@ -11612,12 +11623,17 @@ a {
     color: #FFF
 }
 
+.admin-timeline h2,.ranking-left h2 {
+    font-size: 36px;
+    color: #FFF;
+    font-weight: 600
+}
+
 .admin-captain-base {
     margin-bottom: 60px
 }
 
 .admin-timeline {
-    position: relative;
     margin-bottom: 42px;
     display: flex;
     align-items: center;
@@ -11625,18 +11641,12 @@ a {
 }
 
 .admin-timeline h2 {
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 43px;
-    color: #FFF
+    line-height: 43px
 }
 
 .admin-timeline-bar {
-    background-color: #12111B;
     height: 4px;
-    width: 90px;
-    position: relative;
-    border-radius: 10px
+    width: 90px
 }
 
 .admin-timeline-bar span {
@@ -11666,12 +11676,7 @@ a {
 
 .admin-timeline-item svg {
     margin: 0 auto;
-    height: 50px
-}
-
-.admin-timeline-item img {
-    margin: 0 auto;
-    height: 50px
+    height: 50px !important;
 }
 
 .admin-timeline-item p {
@@ -11695,7 +11700,7 @@ a {
     background-color: #3A3A53;
     width: calc(100% - 30px);
     position: absolute;
-    top: 90px;
+    bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -9
@@ -11709,13 +11714,7 @@ a {
     height: 100%;
     width: 0;
     background: #badaff;
-    background: linear-gradient(129deg,#badaff 45%,#00defc 98%);
-    transition: all .3s
-}
-
-.admin-ranking-table,.state-score-card {
-    background-color: #21212F;
-    border-radius: 10px
+    background: linear-gradient(129deg,#badaff 45%,#00defc 98%)
 }
 
 .ranking-left {
@@ -11725,10 +11724,7 @@ a {
 }
 
 .ranking-left h2 {
-    font-weight: 600;
-    font-size: 36px;
     line-height: 43px;
-    color: #FFF;
     font-family: NHaasGroteskDSPro-55Rg
 }
 
@@ -11736,7 +11732,9 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #21212F;
     padding: 55px 47px;
+    border-radius: 10px;
     margin: 100px 0
 }
 
@@ -11795,10 +11793,6 @@ a {
     color: #B1B0C0
 }
 
-.admin-benefit-card-box {
-    padding-top: 40px
-}
-
 .state-score {
     display: flex;
     align-items: center;
@@ -11821,17 +11815,19 @@ a {
     line-height: 43px;
     -webkit-background-clip: text;
     background-clip: text;
+    font-style: italic;
     font-family: NHaasGroteskDSPro-66MdIt
 }
 
-.state-score-card {
-    padding: 28px;
-    height: 364.88px
+.admin-window-step a,.admin-window-text h2,.score-key-info h4,.score-key-info ul ul li:last-child,.state-score-card table thead th:first-child {
+    font-family: NHaasGroteskDSPro-55Rg
 }
 
-.score-key-head h2,.state-score-card table thead th:first-child {
-    background: linear-gradient(266.71deg,#00DEFC -5.76%,#BADAFF 96.14%);
-    -webkit-text-fill-color: transparent
+.state-score-card {
+    background-color: #21212F;
+    border-radius: 10px;
+    padding: 28px;
+    height: 364.88px
 }
 
 .state-score-card table {
@@ -11851,7 +11847,6 @@ a {
     font-size: 18px;
     line-height: 165.69%;
     -webkit-background-clip: text;
-    font-family: NHaasGroteskDSPro-55Rg;
     background-clip: text;
     text-align: left
 }
@@ -11892,7 +11887,6 @@ a {
     font-weight: 600;
     font-size: 18px;
     line-height: 165.69%;
-    font-family: NHaasGroteskDSPro-55Rg;
     color: #FFF
 }
 
@@ -11923,8 +11917,7 @@ a {
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
-    color: #FFF;
-    font-family: NHaasGroteskDSPro-55Rg
+    color: #FFF
 }
 
 .score-key-box {
@@ -11950,7 +11943,9 @@ a {
     font-weight: 500;
     font-size: 36px;
     line-height: 43px;
+    background: linear-gradient(266.71deg,#00DEFC -5.76%,#BADAFF 96.14%);
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text
 }
 
@@ -11962,7 +11957,7 @@ a {
 .admin-window-box {
     position: fixed;
     inset: 0;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(6px);
     align-items: center;
     justify-content: center;
     display: none;
@@ -11985,7 +11980,6 @@ a {
     font-size: 36px;
     line-height: 43px;
     color: #FFF;
-    font-family: NHaasGroteskDSPro-55Rg;
     padding-bottom: 24px
 }
 
@@ -12004,14 +11998,17 @@ a {
     margin: 47px 0
 }
 
+.admin-step-first,.window-next {
+    display: flex;
+    align-items: center
+}
+
 .admin-window-step a {
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
-    font-family: NHaasGroteskDSPro-55Rg;
     color: #555868;
-    position: relative;
-    transition: all .3s
+    position: relative
 }
 
 .admin-window-step a:nth-of-type(2)::after,.admin-window-step a:nth-of-type(3)::after {
@@ -12030,15 +12027,13 @@ a {
     color: #fff!important
 }
 
-.admin-step-first button,.admin-step-first p {
+.admin-step-first a,.admin-step-first p {
     color: #FFF;
-    font-family: NHaasGroteskDSPro-55Rg;
-    font-weight: 600
+    font-weight: 600;
+    font-family: NHaasGroteskDSPro-55Rg
 }
 
 .admin-step-first {
-    display: flex;
-    align-items: center;
     gap: 1rem;
     margin-bottom: 100px
 }
@@ -12048,7 +12043,7 @@ a {
     line-height: 29px
 }
 
-.admin-step-first button {
+.admin-step-first a {
     width: 110.77px;
     height: 26.39px;
     left: 593.75px;
@@ -12057,8 +12052,7 @@ a {
     border-radius: 14.57px;
     font-size: 13px;
     line-height: 26.39px;
-    text-align: center;
-    border: none;
+    text-align: center
 }
 
 .window-next {
@@ -12066,25 +12060,23 @@ a {
     font-size: 15px;
     color: #A0A0C1;
     border: 2px solid #3A3A53;
+    box-sizing: border-box;
     border-radius: 32.44px;
     width: 129.64px;
     height: 40px;
+    justify-content: center;
+    margin-left: auto
+}
+
+.admin-mail-head,.admin-step-second {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    transition: all .3s
+    gap: 1rem
 }
 
 .window-next:hover {
     border-color: #fff;
     color: #fff
-}
-
-.admin-step-second {
-    display: flex;
-    align-items: center;
-    gap: 1rem
 }
 
 .admin-step-second p {
@@ -12110,10 +12102,12 @@ a {
 }
 
 .admin-mail-head {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
     margin-top: 44px
+}
+
+.admin-check,.admin-mail-control,.admin-tweet-link {
+    display: flex;
+    align-items: center
 }
 
 .admin-mail-head p {
@@ -12133,8 +12127,6 @@ a {
     height: 49.73px;
     border: 1px solid #3A3A53;
     border-radius: 32.44px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     margin-top: 1.6rem
 }
@@ -12150,11 +12142,6 @@ a {
     line-height: 16px;
     color: #FFF;
     padding-left: 1rem
-}
-
-.admin-check,.admin-tweet-link {
-    display: flex;
-    align-items: center
 }
 
 .admin-mail-control input::placeholder {
@@ -12176,8 +12163,7 @@ a {
     color: #FFF;
     border: none;
     cursor: pointer;
-    margin-right: .4rem;
-    transition: all .3s
+    margin-right: .4rem
 }
 
 .admin-check p,.admin-tweet-link p {
@@ -12200,8 +12186,7 @@ a {
 
 .admin-tweet-link p {
     color: #FFF;
-    padding: 0 2rem;
-    flex: 1;
+    padding-left: 2rem
 }
 
 .admin-tweet-link p span:focus {
@@ -12209,7 +12194,6 @@ a {
 }
 
 .admin-tweet-link p input {
-    width: 100%;
     background: 0 0;
     border: none;
     color: #fff!important
@@ -12219,19 +12203,9 @@ a {
     outline: 0
 }
 
-.admin-tweet-link button {
-    border: 0;
-    background: transparent;
-    padding: 0;
-}
-
 .admin-tweet-link svg {
     cursor: pointer;
     margin-right: .4rem
-}
-
-.admin-tweet-link svg rect {
-    transition: all .3s
 }
 
 .admin-tweet-link svg:hover rect {
@@ -12321,14 +12295,130 @@ a {
     display: none
 }
 
+.ui-mobile-discord,.ui-mobile-twitter {
+    background-color: #0EB0E3;
+    padding: 44px 0 44px 37px;
+    width: 100%;
+    border-radius: 10px;
+    gap: 1rem;
+    display: none
+}
+
+.ui-mobile-discord p,.ui-mobile-twitter p {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFF;
+    font-family: NHaasGroteskDSPro-55Rg;
+    padding-bottom: .6rem
+}
+
+.ui-mobile-discord a,.ui-mobile-twitter a {
+    height: 29.15px;
+    width: 105.16px;
+    border: 1px solid #FFF;
+    box-sizing: border-box;
+    border-radius: 14.57px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 29.15px;
+    color: #FFF;
+    text-align: center
+}
+
+.ui-mobile-discord {
+    background-color: #5865F2
+}
+
+.admin-content h2 {
+    font-size: 34px;
+    color: #fff;
+    font-weight: 600;
+    padding-bottom: 3rem
+}
+
+.admin-content button {
+    height: 60px;
+    padding: 0 2rem;
+    background-color: #21212F;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    color: #fff
+}
+
+.admin-content button:hover {
+    background-color: #00DEFC
+}
+
+.profile-input {
+    padding-bottom: 1.3rem;
+    position: relative
+}
+
+.profile-input label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    display: block;
+    padding-bottom: 8px
+}
+
+.profile-input input {
+    height: 60px;
+    width: min(100%,400px);
+    border: none;
+    background-color: #12111B;
+    border-radius: 4px;
+    padding: 1rem;
+    color: #fff
+}
+
+.profile-input input:focus {
+    background-color: #29294e;
+    outline: 0
+}
+
+.tooltip-box {
+    width: 200px;
+    background-color: #fff;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    padding: 10px;
+    border-radius: 3px;
+    display: none
+}
+
+.tooltip-box.active {
+    display: block
+}
+
+.tooltip-box::after {
+    content: "";
+    position: absolute;
+    border-top: 10px solid #fff;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    bottom: -20px;
+    left: 6px
+}
+
+.tooltip-box p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #12111B
+}
+
 @media all and (max-width: 1200px) {
-    .admin-base-info h2,.admin-base-info h4 {
-        line-height:normal;
-        font-size: 16px
+    .admin-base-logo,.admin-brigade-content {
+        margin-bottom:1rem
     }
 
-    .admin-base-info,.hamburger-cross,.hamburger-menu,.mobile-header,.ranking-task {
-        display: flex
+    .admin-base-info h2,.admin-base-info h4 {
+        line-height: normal;
+        font-size: 16px
     }
 
     .admin-slidebar {
@@ -12343,7 +12433,11 @@ a {
         left: 0
     }
 
-    .admin-bg img {
+    .hamburger-cross,.hamburger-menu {
+        display: flex
+    }
+
+    .admin-bg,.admin-bg img {
         width: 100%
     }
 
@@ -12378,6 +12472,7 @@ a {
     }
 
     .admin-base-info {
+        display: flex;
         align-items: center;
         gap: 1rem
     }
@@ -12418,11 +12513,8 @@ a {
     }
 
     .admin-brigade {
-        padding: 20px
-    }
-
-    .admin-brigade-content {
-        margin-bottom: 1rem
+        padding: 20px;
+        margin-top: 70px
     }
 
     .admin-brigade-content h4 {
@@ -12444,8 +12536,7 @@ a {
 
     .admin-base-logo {
         flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 2rem
+        gap: 1rem
     }
 
     .admin-base-logo div {
@@ -12473,7 +12564,7 @@ a {
         height: auto
     }
 
-    .admin-benefit-card,.admin-mail-control,.ranking-left {
+    .admin-benefit-card,.ranking-left {
         margin-bottom: 1rem
     }
 
@@ -12524,6 +12615,7 @@ a {
 
     .ranking-task {
         text-align: start;
+        display: flex;
         justify-content: space-between
     }
 
@@ -12548,21 +12640,27 @@ a {
     }
 
     .admin-window-content {
-        width: 90%;
-        padding: 20px
+        width: 100%;
+        padding: 20px;
+        background: 0 0
     }
 
     .admin-window-text h2 {
-        font-size: 22px;
+        font-size: 20px;
         padding-bottom: 0
     }
 
-    .admin-step-first p,.admin-step-second p,.admin-window-step a,.admin-window-text p {
-        font-size: 16px
+    .admin-window-text p {
+        font-size: 14px;
+        line-height: 178%
     }
 
     .admin-window-step {
         margin: 20px 0
+    }
+
+    .admin-window-step a {
+        font-size: 18px
     }
 
     .admin-step-first svg,.admin-step-second svg {
@@ -12570,44 +12668,172 @@ a {
         width: 20px
     }
 
+    .admin-step-first p,.admin-step-second p {
+        font-size: 16px
+    }
+
     .admin-step-first a,.admin-step-second a {
         font-size: 12px;
         width: 75px
     }
 
-    .window-next {
-        height: 32px;
-        width: 80px;
-        font-size: 12px
+    .admin-step-first {
+        margin-bottom: 1rem;
+        display: none
     }
 
-    .admin-mail-head svg {
-        height: 20px;
-        width: 20px
+    .admin-step-first a {
+        font-size: 13px;
+        height: 26.39px;
+        width: 110.77px
+    }
+
+    .admin-step-second {
+        flex-wrap: wrap;
+        gap: .4rem
+    }
+
+    .admin-step-second svg {
+        width: 41.55px;
+        height: 33.71px
+    }
+
+    .admin-step-second p {
+        font-size: 14px
+    }
+
+    .admin-step-second a {
+        font-size: 14px;
+        height: 29.15px;
+        flex-basis: 105.16px
+    }
+
+    .admin-mail-head {
+        margin-top: 16px
+    }
+
+    .admin-mail-head svg:first-of-type {
+        height: 33.16px;
+        width: 33.16px
     }
 
     .admin-mail-head p {
         font-size: 16px
     }
 
-    .admin-mail-control,.admin-step-three img {
-        width: 100%
+    .admin-mail-control {
+        width: 100%;
+        margin-bottom: 1rem
     }
 
     .admin-tweet-link {
         width: 100%;
-        height: 58.4px
+        height: 44px;
+        margin-bottom: 24px
+    }
+
+    .admin-tweet-link input {
+        width: 100%;
+        font-size: 11px
     }
 
     .admin-tweet-link p {
-        flex-basis: 80%
+        flex-basis: 100%
     }
 
     .admin-twees-bottom {
         flex-wrap: wrap
     }
 
+    .admin-check {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: flex-start
+    }
+
+    .admin-check p {
+        font-size: 11px;
+        line-height: 178%;
+        transform: translateY(-2px)
+    }
+
+    .mobile-header,.ui-mobile-discord,.ui-mobile-twitter {
+        display: flex
+    }
+
+    .admin-step-second {
+        display: none
+    }
+
+    .window-next {
+        background: linear-gradient(to right,#BAFFD1,#00DEFC,#BAFFD1);
+        border-radius: 32.44px;
+        height: 51.03px;
+        width: 100%;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 51.03px;
+        color: #FFF;
+        text-align: center;
+        border: none;
+        margin-top: 24px;
+        transition: all .3s;
+        background-size: 200%;
+        background-position: left
+    }
+
+    .window-next:hover {
+        color: #fff;
+        background-position: right
+    }
+
+    .ui-join-step {
+        background-color: #3A3A53;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px
+    }
+
+    .ui-join-step .admin-mail-head svg:last-of-type circle {
+        fill: #00DEFC!important
+    }
+
+    .ui-join-step .admin-mail-control {
+        border-color: #747486
+    }
+
+    .ui-join-step .admin-mail-control button {
+        background-color: #fff;
+        color: #29293A;
+        transition: all .3s
+    }
+
+    .ui-join-step .admin-mail-control button:hover {
+        background-color: #29293A;
+        color: #fff
+    }
+
+    .admin-step-three img {
+        width: 100%;
+        padding: 5px;
+        background-color: #00DEFC;
+        border-radius: 15px;
+        margin-bottom: 20px
+    }
+
     .admin-check label {
-        flex-basis: 30px
+        background-color: #fff
+    }
+
+    .admin-check svg path {
+        stroke: #29293A
+    }
+
+    .admin-window-box {
+        background-color: #1C1C28
+    }
+
+    .admin-window-box.active {
+        display: unset
     }
 }
