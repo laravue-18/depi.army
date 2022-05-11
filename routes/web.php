@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('rank', [UserController::class, 'rank']);
         Route::get('stats', [UserController::class, 'stats']);
         Route::get('profile', [UserController::class, 'profile']);
+        Route::post('profile', [UserController::class, 'updateProfile']);
     });
 
     Route::get('u/{username}', [UserController::class, 'profile'])->name('profile');
