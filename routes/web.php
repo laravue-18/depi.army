@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('home', [UserController::class, 'dashboard']);
         Route::get('rank', [UserController::class, 'rank']);
         Route::get('stats', [UserController::class, 'stats']);
+        Route::get('profile', [UserController::class, 'profile']);
     });
 
     Route::get('u/{username}', [UserController::class, 'profile'])->name('profile');
