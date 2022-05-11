@@ -25,7 +25,7 @@
         <a href="/profile">Profile</a>
         <form action="logout" method="post">
             @csrf
-            <button type="submit" class="">Logout</button>
+            <button type="submit" class="text-white">Logout</button>
         </form>
     </div>
     <div class="admin-media">
