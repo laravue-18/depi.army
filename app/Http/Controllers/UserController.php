@@ -43,9 +43,11 @@ class UserController extends Controller
     }
 
     public function login(){
-        return Socialite::driver('twitter-oauth-2')
-            ->scopes(['follows.read', 'follows.write', 'tweet.write'])
+        return Socialite::driver('twitter')
             ->redirect();
+//        return Socialite::driver('twitter-oauth-2')
+//            ->scopes(['follows.read', 'follows.write', 'tweet.write'])
+//            ->redirect();
     }
 
     public function callback()
