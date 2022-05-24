@@ -60,7 +60,7 @@ class UserController extends Controller
             if ($user) {
                 $user->update([
                     'provider_token' => $twitterUser->token,
-                    'provider_refresh_token' => $twitterUser->refreshToken,
+//                    'provider_refresh_token' => $twitterUser->refreshToken,
                 ]);
             } else if(session('wallet_id')) {
                 $referrer = User::whereUsername(session()->pull('referrer'))->first();
