@@ -9,10 +9,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Nette\InvalidStateException;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class UserController extends Controller
 {
     public function welcome($username = null){
+        $connection = new TwitterOAuth('E8v699iD3uRocukSRPyiDt88A', 'rfOwN5RWirH7LS4MNBEvXS8PJ2s9sWYC91qX69j3Lwn1aZxcol', '1505832699357167616-KA3vEa3wqzn83J7Jg4KHTx5DcFmFCm', 'kqZtA0dUJPvRqGKcnkVGbfy0yG0fXRHx7XViJ9GTtFp0M');
+        $media1 = $connection->upload('media/upload', ['media' => public_path('img/tweet.png')]);
+        $parameters = [
+            'status' => 'Meow Meow Meow',
+            'media_ids' => implode(',', [$media1->media_id_string])
+        ];
+        $result = $connection->post('statuses/update', $parameters);
+
+        dd($result);
+
         if($username){
             session(['referrer' => $username]);
         }
@@ -43,8 +54,7 @@ class UserController extends Controller
     }
 
     public function login(){
-        return Socialite::driver('twitter')
-            ->redirect();
+        return Socialite::driver('twitter')->redirect();
 //        return Socialite::driver('twitter')
 //            ->scopes(['follows.read', 'follows.write', 'tweet.write'])
 //            ->redirect();
@@ -149,6 +159,11 @@ class UserController extends Controller
     public function tweet(Request $request){
         $text = $request->input('text');
         $user = auth()->user();
+        $response = Http::withToken($user->provider_token)
+            ->post("https://upload.twitter.com/1.1/media/upload.json?media_category=tweet_image", [
+                "media" => "1516617212483702788"
+            ])
+            ->json();
 //        $response = Http::withToken($user->provider_token)
 //            ->post("https://api.twitter.com/2/tweets/", [
 //                "text" => $text,
@@ -157,11 +172,11 @@ class UserController extends Controller
 ////                ]
 //            ])
 //            ->json();
-        $response = Http::withToken($user->provider_token)
-            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/retweets", [
-                "tweet_id" => "1516617212483702788"
-            ])
-            ->json();
+//        $response = Http::withToken($user->provider_token)
+//            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/retweets", [
+//                "tweet_id" => "1516617212483702788"
+//            ])
+//            ->json();
 //        if(isset($response['detail'])){
 //            $request->session()->flash("error", $response['detail']);
 //        }
