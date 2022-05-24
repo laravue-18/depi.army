@@ -40,22 +40,22 @@ class UserController extends Controller
             'wallet_id' => 'required'
         ]);
         session(['wallet_id' => $request['wallet_id']]);
-        return Socialite::driver('twitter')
+        return Socialite::driver('twitter-oauth-2')
                 ->scopes(['follows.read', 'follows.write', 'tweet.write'])
                 ->redirect();
     }
 
     public function login(){
-        return Socialite::driver('twitter')->redirect();
-//        return Socialite::driver('twitter')
-//            ->scopes(['follows.read', 'follows.write', 'tweet.write'])
-//            ->redirect();
+        return Socialite::driver('twitter-oauth-2')
+            ->scopes(['follows.read', 'follows.write', 'tweet.write'])
+            ->redirect();
     }
 
     public function callback()
     {
         try {
-            $twitterUser = Socialite::driver('twitter')->user();
+            $twitterUser = Socialite::driver('twitter-oauth-2')->user();
+            dd($twitterUser);
 
             $user = User::where('provider_id', $twitterUser->id)->first();
 
@@ -149,8 +149,7 @@ class UserController extends Controller
     }
 
     public function tweet(Request $request){
-        $twitterUser = Socialite::driver('twitter')->user();
-        dd(twitterUser);
+        $twitterUser = Socialite::driver('twitter')->redirect();
         $text = $request->input('text');
         $connection = new TwitterOAuth('E8v699iD3uRocukSRPyiDt88A', 'rfOwN5RWirH7LS4MNBEvXS8PJ2s9sWYC91qX69j3Lwn1aZxcol', '1505832699357167616-KA3vEa3wqzn83J7Jg4KHTx5DcFmFCm', 'kqZtA0dUJPvRqGKcnkVGbfy0yG0fXRHx7XViJ9GTtFp0M');
         $media1 = $connection->upload('media/upload', ['media' => public_path('img/tweet.png')]);
