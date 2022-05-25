@@ -28,7 +28,7 @@ class User extends Authenticatable
         'provider',
         'provider_id',
         'provider_token',
-        'provider_refresh_token',
+        'provider_token_secret',
         'password',
         'wallet_id',
         'referrer_id',

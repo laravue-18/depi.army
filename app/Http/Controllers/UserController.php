@@ -14,8 +14,6 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 class UserController extends Controller
 {
     public function welcome($username = null){
-
-
         if($username){
             session(['referrer' => $username]);
         }
@@ -94,12 +92,11 @@ class UserController extends Controller
 
     public function following(Request $request){
         $user = auth()->user();
-        $response = Http::withToken($user->provider_token)
-            ->post("https://api.twitter.com/2/users/" . $user->provider_id . "/following", [
-                "target_user_id" => env('TWITTER_FOLLOW_ID')
-            ])
-            ->json();
-        if($response['data']['following']){
+        $connection = new TwitterOAuth(config('services.twitter.client_id'), config('services.twitter.client_secret'), $user->provider_token, $user->provider_token_secret);
+        $response = $connection->post("friendships/create", [
+            "screen_name" => 'depi_army'
+        ]);
+        if ($connection->getLastHttpCode() == 200) {
             $t = now();
             $user->update(['following_at' => $t]);
             return ["success" => true, "following_at" => $t];
@@ -144,23 +141,22 @@ class UserController extends Controller
     }
 
     public function tweet(Request $request){
-        $twitterUser = Socialite::driver('twitter')->redirect();
         $text = $request->input('text');
-        $connection = new TwitterOAuth('E8v699iD3uRocukSRPyiDt88A', 'rfOwN5RWirH7LS4MNBEvXS8PJ2s9sWYC91qX69j3Lwn1aZxcol', '1505832699357167616-KA3vEa3wqzn83J7Jg4KHTx5DcFmFCm', 'kqZtA0dUJPvRqGKcnkVGbfy0yG0fXRHx7XViJ9GTtFp0M');
-        $media1 = $connection->upload('media/upload', ['media' => public_path('img/tweet.png')]);
+        $user = auth()->user();
+        $connection = new TwitterOAuth(config('services.twitter.client_id'), config('services.twitter.client_secret'), $user->provider_token, $user->provider_token_secret);
+        $media = $connection->upload('media/upload', ['media' => public_path('img/tweet.png')]);
         $parameters = [
             'status' => $text,
-            'media_ids' => implode(',', [$media1->media_id_string])
+            'media_ids' => implode(',', [$media->media_id_string])
         ];
-        $result = $connection->post('statuses/update', $parameters);
+        $res = $connection->post('statuses/update', $parameters);
 
-        dd($result);
-        if(isset($response['data']['retweeted'])){
+        if ($connection->getLastHttpCode() == 200) {
             auth()->user()->update([
-                'tweet' => "1516617212483702788",
+                'tweet' => $res->id,
                 'tweet_at' => now()
             ]);
-            return ['success' => $response['data']['retweeted'], "tweet" => "1516617212483702788"];
+            return ['success' => true, "tweet" => $res->id];
         }
         return ['success' => false];
     }
