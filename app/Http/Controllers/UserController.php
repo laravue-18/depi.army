@@ -40,21 +40,19 @@ class UserController extends Controller
             'wallet_id' => 'required'
         ]);
         session(['wallet_id' => $request['wallet_id']]);
-        return Socialite::driver('twitter-oauth-2')
+        return Socialite::driver('twitter')
                 ->scopes(['follows.read', 'follows.write', 'tweet.write'])
                 ->redirect();
     }
 
     public function login(){
-        return Socialite::driver('twitter-oauth-2')
-            ->scopes(['follows.read', 'follows.write', 'tweet.write'])
-            ->redirect();
+        return Socialite::driver('twitter')->redirect();
     }
 
     public function callback()
     {
         try {
-            $twitterUser = Socialite::driver('twitter-oauth-2')->user();
+            $twitterUser = Socialite::driver('twitter')->user();
             dd($twitterUser);
 
             $user = User::where('provider_id', $twitterUser->id)->first();
@@ -62,7 +60,7 @@ class UserController extends Controller
             if ($user) {
                 $user->update([
                     'provider_token' => $twitterUser->token,
-//                    'provider_refresh_token' => $twitterUser->refreshToken,
+                    'provider_token_secret' => $twitterUser->refreshToken,
                 ]);
             } else if(session('wallet_id')) {
                 $referrer = User::whereUsername(session()->pull('referrer'))->first();

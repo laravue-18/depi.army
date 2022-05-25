@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('provider');
             $table->string('provider_id');
             $table->string('provider_token')->nullable();
-            $table->string('provider_refresh_token')->nullable();
+            $table->string('provider_token_secret')->nullable();
             $table->string('discord_id')->nullable();
             $table->string('discord_token')->nullable();
             $table->string('discord_refresh_token')->nullable();
