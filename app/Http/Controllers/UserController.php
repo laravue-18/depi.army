@@ -40,9 +40,7 @@ class UserController extends Controller
             'wallet_id' => 'required'
         ]);
         session(['wallet_id' => $request['wallet_id']]);
-        return Socialite::driver('twitter')
-                ->scopes(['follows.read', 'follows.write', 'tweet.write'])
-                ->redirect();
+        return Socialite::driver('twitter')->redirect();
     }
 
     public function login(){
