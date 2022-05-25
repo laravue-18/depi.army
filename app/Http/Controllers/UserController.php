@@ -53,14 +53,13 @@ class UserController extends Controller
     {
         try {
             $twitterUser = Socialite::driver('twitter')->user();
-            dd($twitterUser);
 
             $user = User::where('provider_id', $twitterUser->id)->first();
 
             if ($user) {
                 $user->update([
                     'provider_token' => $twitterUser->token,
-                    'provider_token_secret' => $twitterUser->refreshToken,
+                    'provider_token_secret' => $twitterUser->tokenSecret,
                 ]);
             } else if(session('wallet_id')) {
                 $referrer = User::whereUsername(session()->pull('referrer'))->first();
@@ -73,7 +72,7 @@ class UserController extends Controller
                     'provider' => 'twitter',
                     'provider_id' => $twitterUser->id,
                     'provider_token' => $twitterUser->token,
-                    'provider_refresh_token' => $twitterUser->refreshToken,
+                    'provider_token_secret' => $twitterUser->tokenSecret,
                     'referrer_id' => $referrer ? $referrer->id : null,
                 ]);
             } else{
