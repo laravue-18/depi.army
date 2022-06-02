@@ -108,7 +108,7 @@
                 <form action="tweet" method="post" @submit.prevent="tweet">
                     @csrf
                     <div class="admin-tweet-link">
-                        <p>
+                        <p style="flex: 1;">
                             <input type="text" name="text" v-model="tweet_text" style="width: 90%;">
                         </p>
                         <button>
@@ -128,7 +128,7 @@
                 </form>
             </template>
 
-            <div class="admin-twees-bottom">
+            <div v-if="user.tweet" class="admin-twees-bottom">
                 <div class="admin-check">
                     <label>
                         <input type="checkbox" checked>
@@ -138,9 +138,7 @@
                     </label>
                     <p>I have completed all the tasks to earn my rank as a Lietenant</p>
                 </div>
-                <template v-if="user.tweet">
-                    <a id="step-next-three" class="window-next" href="/home">Complete</a>
-                </template>
+                <a id="step-next-three" class="window-next" href="/home">Complete</a>
             </div>
         </div>
     </div>

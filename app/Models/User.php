@@ -64,7 +64,7 @@ class User extends Authenticatable
     protected $appends = [];
 
     public function getShareLinkAttribute(){
-        return route('profile', $this->username);
+        return route('referral', $this->username);
     }
 
     public function getReferralLinkAttribute(){

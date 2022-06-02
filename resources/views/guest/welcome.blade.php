@@ -256,7 +256,7 @@
                         </div>
                         <p>When joining, you will be authenticated through twitter to make signing up simple and
                             anonymous, we do not request your email from twitter.</p>
-                        <form  action="enlist" method="post">
+                        <form  action="/enlist" method="post">
                             @csrf
                             <div class="form-input">
                                 <input type="text" name="wallet_id" placeholder="Enter Wallet" required>

@@ -27,7 +27,7 @@ Route::middleware('guest')->group(function(){
     Route::get('/ourteam', [UserController::class, 'ourteam']);
     Route::get('/roadmap', [UserController::class, 'roadmap']);
 
-    Route::post('enlist', [UserController::class, 'enlist']);
+    Route::post('/enlist', [UserController::class, 'enlist']);
     Route::get('login', [UserController::class, 'login'])->name('login');
 
     Route::get('/u/{username}', [UserController::class, 'welcome'])->name('referral');
@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function(){
         Route::post('profile', [UserController::class, 'updateProfile']);
     });
 
-    Route::get('u/{username}', [UserController::class, 'profile'])->name('profile');
+//    Route::get('u/{username}', [UserController::class, 'profile'])->name('profile');
 });
 
 Route::prefix('admin')->group(function(){
