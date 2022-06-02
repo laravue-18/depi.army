@@ -169,7 +169,6 @@
                     .then(res => res.json())
                     .then(data => {
                         if(data.success){
-                            alert("You're following Depi Army.")
                             this.$set(this.user, 'following_at', data.following_at)
                         }
                     })
@@ -185,7 +184,6 @@
                         .then(res => res.json())
                         .then(data => {
                             if(data.success){
-                                alert('Your email is aaved to your profile, click next to continue')
                                 this.$set(this.user, 'email', data.email)
                             }
                         })
@@ -201,7 +199,6 @@
                         .then(res => res.json())
                         .then(data => {
                             if(data.success){
-                                alert('Your tweet was posted successfully, now click complete!')
                                 this.$set(this.user, 'tweet', data.tweet)
                             }else{
                                 alert('Failed');

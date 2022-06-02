@@ -29,24 +29,25 @@ class Kernel extends ConsoleKernel
     {
          $schedule->call(function(){
              $users = User::all();
+             $token = env('TWITTER_BEARER_TOKEN');
              foreach($users as $user){
-                 $response1 = Http::withToken(env('TWITTER_BEARER_TOKEN'))
+                 $response1 = Http::withToken($token)
                      ->get("https://api.twitter.com/2/users/" . $user->provider_id . "/tweets?expansions=referenced_tweets.id.author_id")
                      ->json('includes.tweets');
                  $depi_retweet_count = collect($response1)->where('author_id', env('TWITTER_FOLLOW_ID'))->count();
 
-                 $response2 = Http::withToken(env('TWITTER_BEARER_TOKEN'))
+                 $response2 = Http::withToken($token)
                      ->get("https://api.twitter.com/2/users/" . env('TWITTER_FOLLOW_ID') . "/mentions?expansions=author_id")
                      ->json('data');
                  $depi_reply_count = collect($response2)->where('author_id', $user->provider_id)->count();
 
-                 $response3 = Http::withToken(env('TWITTER_BEARER_TOKEN'))
+                 $response3 = Http::withToken($token)
                      ->get("https://api.twitter.com/2/users/" . $user->provider_id . "/liked_tweets?expansions=author_id")
                      ->json('data');
                  $depi_like_count = collect($response3)->where('author_id', env('TWITTER_FOLLOW_ID'))->count();
 
                  /** My Tweets */
-                 $response = Http::withToken(env('TWITTER_BEARER_TOKEN'))
+                 $response = Http::withToken($token)
                      ->get("https://api.twitter.com/2/users/" . $user->provider_id . "/tweets?tweet.fields=entities,public_metrics")
                      ->json('data');
                  $v3 = collect($response)
