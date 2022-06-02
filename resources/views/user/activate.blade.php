@@ -109,7 +109,7 @@
                     @csrf
                     <div class="admin-tweet-link">
                         <p>
-                            <input type="text" name="text" v-model="tweet_text">
+                            <input type="text" name="text" v-model="tweet_text" style="width: 90%;">
                         </p>
                         <button>
                             <svg width="31" height="32" viewBox="0 0 31 32" fill="none" xmlns="http://www.w3.org/2000/svg">
