@@ -27,7 +27,7 @@
                     <img src={{"img/lieutenant_sm_" . ( $rankNumber >= 0 ) . ".svg"}} alt="">
                     <div class="admin-timeline-circle"></div>
                     <p>
-                        @if($user->stat ? $user->stat->lieutenant_at : '')
+                        @if($user->stat ? $user->stat->lieutenant_at : $user->tweet_at)
                             {{ explode("-", $user->stat->lieutenant_at)[1] }}.{{ explode("-", $user->stat->lieutenant_at)[2] }}
                         @endif
                     </p>
