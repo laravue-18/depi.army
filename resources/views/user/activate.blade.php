@@ -44,10 +44,10 @@
                     <p>@depiarmy</p>
 
                     <template v-if="user.following_at">
-                        <button type="button">Followed</button>
+                        <button type="button" class="rounded-full border border-white text-white px-4">Followed</button>
                     </template>
                     <template v-else>
-                        <button type="submit">Follow</button>
+                        <button type="submit" class="rounded-full border border-white text-white px-4">Follow</button>
                     </template>
                 </div></div></div>
             </form>
