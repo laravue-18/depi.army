@@ -123,7 +123,7 @@
                 <a class="window-next" @click.prevent="step++">Next</a>
             </template>
         </div>
-        <div v-else-if="step==3">
+        <div v-else-if="step==3" class="admin-step-three active">
             <img src="/img/tweet.png">
             <template v-if="user.tweet">
                 <div class="admin-tweet-link">
