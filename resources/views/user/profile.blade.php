@@ -30,7 +30,7 @@
             </div>
             <div class="profile-input">
                 <label>Twitter</label>
-                <input id="input-box" name="provider_id" type="text" value="{{ $user->provider_id }}"/>
+                <input id="input-box" name="provider_id" type="text" value="{{ $user->username }}"/>
 
                 <div class="tooltip-box">
                     <p>This should be the wallet address you want to whitelist for mint</p>

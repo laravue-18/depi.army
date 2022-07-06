@@ -10,7 +10,7 @@
     <!-- admin content -->
     <div class="admin-content">
         <div class="admin-base-logo">
-            <img src="img/{{ $rank }}.svg" alt="">
+            <img src="img/{{ $rank }}.svg" alt="" width="41">
             <div>
                 <h2>{{ $rank }}</h2>
             </div>
