@@ -105,7 +105,7 @@ class UserController extends Controller
 
     public function redirectDiscord(){
         return Socialite::driver('discord')
-            ->scopes(['guilds.join'])
+            ->setScopes(['identify', 'guilds.join'])
             ->redirect();
     }
 
