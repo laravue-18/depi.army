@@ -126,10 +126,9 @@
         <div v-else-if="step==3" class="admin-step-three active">
             <img src="/img/tweet.png">
             <template v-if="user.tweet">
-                <div class="admin-tweet-link">
-                    <p>
-                        <a class="text-white" :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">@{{ 'https://twitter.com/' + user.username + '/status/' + user.tweet }}</a>
-                    </p>
+                <div >
+                    <h1 class="text-white">Tweet Posted Successfully</h1>
+                    <a class="text-white" :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">@{{ 'https://twitter.com/' + user.username + '/status/' + user.tweet }}</a>
                 </div>
             </template>
             <template v-else>
