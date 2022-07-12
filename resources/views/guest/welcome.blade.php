@@ -297,20 +297,20 @@
         })
 
         @if(session()->get('notRegistered'))
-            // alert('You do not have an account yet. Please sign up by enlisting now.');
             $.toast({
                 heading: 'Error',
-                text: 'Report any <a href="https://github.com/kamranahmedse/jquery-toast-plugin/issues">issues</a>',
+                text: 'You do not have an account yet. Please sign up by enlisting now.',
                 showHideTransition: 'fade',
+                position: 'top-right',
                 icon: 'error'
             })
         @endif
         @if(session()->get('twitterError'))
-            // alert("It seems there's a problem in your twitter acount.");
             $.toast({
                 heading: 'Error',
-                text: 'Report any <a href="https://github.com/kamranahmedse/jquery-toast-plugin/issues">issues</a>',
+                text: 'It seems there's a problem in your twitter acount.',
                 showHideTransition: 'fade',
+                position: 'top-right',
                 icon: 'error'
             })
         @endif
