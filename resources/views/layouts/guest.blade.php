@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/tailwind.min.css">
 
     @stack('css')
 </head>
