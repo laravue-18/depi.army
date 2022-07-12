@@ -16,268 +16,259 @@
 @endpush
 
 @section('content')
-    <!-- banner section -->
-{{--    <div id="alert-1" class="flex p-4 mb-4 bg-blue-100 rounded-lg dark:bg-blue-200" role="alert">--}}
-{{--        <svg class="flex-shrink-0 w-5 h-5 text-blue-700 dark:text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>--}}
-{{--        <div class="ml-3 text-sm font-medium text-blue-700 dark:text-blue-800">--}}
-{{--            A simple info alert with an <a href="#" class="font-semibold underline hover:text-blue-800 dark:hover:text-blue-900">example link</a>. Give it a click if you like.--}}
-{{--        </div>--}}
-{{--        <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-blue-100 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300" data-dismiss-target="#alert-1" aria-label="Close">--}}
-{{--            <span class="sr-only">Close</span>--}}
-{{--            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>--}}
-{{--        </button>--}}
-{{--    </div>--}}
-    <section class="banner-section vh-100 d-flex align-items-center justify-content-center">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="banner-content text-center">
-                        <h2><span>pi to</span> i<p class="n">n</p><p class="f">f</p>ini<p class="t">t</p>y!</h2>
-                        <p>With the infinite digits of Pi, we create art that evolves infinitely. Hooah!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- join section -->
-    <section class="join-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="join-left">
-                        <p>Harnessing the power of technology, art, NFTs and web3, Pi is now decentralized. </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="join-right d-flex justify-content-end">
-                        <a href="#enlistForm">Join the dePi Army!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="join-overlay">
-            <img src="/img/join.svg">
-        </div>
-    </section>
-
-    <!-- qr section -->
-    <section class="qr-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="qr-left">
-                        <h2>The Art of Pi</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut
-                            labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="qr-right">
-                        <div class="qr-scanner-box">
-                            <div class="d-flex justify-content-center">
-                                <img class="qr-img" src="/img/qr.svg" alt="qr code img">
-                            </div>
-                            <div class="qr-scanner">
-                                <img src="/img/qr-scanner.svg" alt="">
-                            </div>
-                            <div class="qr-status">
-                                <div class="qr-status-scroll">
-                                    <div class="qr-list qr-left-1">
-                                        <p>The gradient is made from two color hexcodes that match the numbers of Pi</p>
-                                    </div>
-                                    <div class="qr-list qr-left-2">
-                                        <p>Art is regenerated every 3.14 seconds from 12 digits of Pi</p>
-                                    </div>
-                                    <div class="qr-list qr-left-3">
-                                        <p>Art is regenerated every 3.14 seconds from 12 digits of Pi</p>
-                                    </div>
-                                </div>
-                            </div>
+    <div id="app">
+        <!-- banner section -->
+        <section class="banner-section vh-100 d-flex align-items-center justify-content-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="banner-content text-center">
+                            <h2><span>pi to</span> i<p class="n">n</p><p class="f">f</p>ini<p class="t">t</p>y!</h2>
+                            <p>With the infinite digits of Pi, we create art that evolves infinitely. Hooah!</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- art content section -->
-    <section class="art-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="art-box">
-                        <div class="row">
-                            <div class="col-lg-6 order-2 order-lg-1">
-                                <div class="art-img">
-                                    <img src="/img/art.svg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2">
-                                <div class="art-content" id="art-content">
-                                    <div class="art-content-anim">
-                                        <h2>3.14 Commendations</h2>
-                                    </div>
-                                    <p>Every year, we invite artists to submit their unique designs for
-                                        consideration as
-                                        our new scannable art. The art with the most votes wins and will be
-                                        installed
-                                        for Pi Day. As part of our Pi Day Celebration, the artist will receive the
-                                        3.14
-                                        ART AWARD and receives the 3.14% of that year’s annual sales .</p>
-                                    <p>Your art continues to mature and diversify year over year.</p>
-                                </div>
-                            </div>
+        </section>
+    
+        <!-- join section -->
+        <section class="join-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="join-left">
+                            <p>Harnessing the power of technology, art, NFTs and web3, Pi is now decentralized. </p>
                         </div>
                     </div>
-                    <div class="art-circle"></div>
-                    <div class="art-dot">
-                        <img src="/img/join.svg">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- nft section -->
-    <section class="nft-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 order-2 order-lg-1">
-                    <div class="nft-card">
-                        <ul>
-                            <li>Regeneration <span class="seqNum">0</span></li>
-                            <li><svg width="19" height="18" viewBox="0 0 19 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M9.63102 1.59378C5.67003 1.59378 2.45901 4.8048 2.45901 8.76579C2.45901 12.7268 5.67003 15.9378 9.63102 15.9378C13.592 15.9378 16.803 12.7268 16.803 8.76579C16.803 4.8048 13.592 1.59378 9.63102 1.59378ZM0.865234 8.76579C0.865234 3.92458 4.78981 0 9.63102 0C14.4722 0 18.3968 3.92458 18.3968 8.76579C18.3968 13.607 14.4722 17.5316 9.63102 17.5316C4.78981 17.5316 0.865234 13.607 0.865234 8.76579Z"
-                                        fill="white" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M9.631 3.18756C10.0711 3.18756 10.4279 3.54434 10.4279 3.98445V8.90268C10.4279 8.90274 10.4279 8.90263 10.4279 8.90268C10.428 9.11395 10.512 9.31671 10.6614 9.46608L12.5852 11.3899C12.8964 11.7011 12.8964 12.2056 12.5852 12.5168C12.2739 12.828 11.7694 12.828 11.4582 12.5168L9.53457 10.5932C9.53454 10.5932 9.5346 10.5933 9.53457 10.5932C9.08626 10.145 8.83424 9.53698 8.83411 8.90302V3.98445C8.83411 3.54434 9.19089 3.18756 9.631 3.18756Z"
-                                        fill="white" />
-                                </svg>
-                                <span id="timer">3.14</span>
-                            </li>
-                        </ul>
-                        <div class="nft-card-content">
-                            <div class="nft-head-bg"></div>
-                            <div class="nft-body">
-                                <div id="qrCodeCanvas"></div>
-{{--                                <img src="/img/nft-qr.svg">--}}
-                                <div class="nft-body-content">
-                                    <h2>Pi Digits</h2>
-                                    <p>FROM THE <span class="digitNum"></span>TH DECIMAL OF PI</p>
-                                    <h4 class="colorDigits">820931840573</h4>
-                                    <div class="nft-color">
-                                        <ul>
-                                            <li>
-                                                <span></span>
-                                                <p class="color1Digits">#820931</p>
-                                            </li>
-                                            <li>
-                                                <span></span>
-                                                <p class="color2Digits">#840573</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-lg-6">
+                        <div class="join-right d-flex justify-content-end">
+                            <a href="#enlistForm">Join the dePi Army!</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 order-1 order-lg-2">
-                    <div class="nft-right-content">
-                        <h2>You become a General when you mint an Infinitely regenerating NFT.</h2>
-                        <ul>
-                            <li>Infinity NFTs regenerate forever</li>
-                            <li>Watch it evolve every 3.14 seconds from 12 new digits of Pi</li>
-                            <li>Your art is always unique, never regenerating with the same digits as your fellow
-                                members</li>
-                            <li>All the generated scannable art is downloadable and yours forever</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- info card section -->
-    <section class="info-section">
-        <div class="container position-relative">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="info-card">
-                        <img src="/img/info-01.svg">
-                        <h4>Pi Day Celebrations</h4>
-                        <p>Every year on 3.14 we will throw an exclusive members only Pi Day party. There will be
-                            many
-                            celebrations but the VIP events are for ranked Generals with clearance. </p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="info-card">
-                        <img src="/img/info-02.svg" class="info-img-fix-1">
-                        <h4>Voting Rights</h4>
-                        <p>All soldiers receive voting rights. Generals command what deciding options will be voted
-                            on.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="info-card">
-                        <img src="/img/info-03.svg" class="info-img-fix-2">
-                        <h4>70% Dividends</h4>
-                        <p>After the Infinity NFT sale, and all ranked General are earned, we will open up
-                            recruiting
-                            for anyone to become a soldier. Soldiers choose their favorite set of digits from Pi and
-                            MINT them. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="info-card-dot">
+            <div class="join-overlay">
                 <img src="/img/join.svg">
             </div>
-        </div>
-    </section>
-
-    <!-- contact section -->
-    <section class="contact-section" id="enlistForm">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <h2>Start Your Brigade</h2>
-                        <p>The Infinity NFTs will be available as a limited time-based Open Edition.The date, price
-                            and
-                            rules will be announced soon. </p>
-                        <p>
-                            Every 3 Hours and 14 seconds, we group those who enlist. Earlier groups have the
-                            advantage
-                            of minting sooner and ranking higher.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="contact-form" >
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h4>Enlist Now</h4>
-                            <h4 class="countdown">2 Days 3 Hours 14 Minutes</h4>
+        </section>
+    
+        <!-- qr section -->
+        <section class="qr-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="qr-left">
+                            <h2>The Art of Pi</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut
+                                labore et dolore magna aliqua.</p>
                         </div>
-                        <p>When joining, you will be authenticated through twitter to make signing up simple and
-                            anonymous, we do not request your email from twitter.</p>
-                        <form  action="/enlist" method="post">
-                            @csrf
-                            <div class="form-input">
-                                <input type="text" name="wallet_id" placeholder="Enter Wallet" required>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="qr-right">
+                            <div class="qr-scanner-box">
+                                <div class="d-flex justify-content-center">
+                                    <img class="qr-img" src="/img/qr.svg" alt="qr code img">
+                                </div>
+                                <div class="qr-scanner">
+                                    <img src="/img/qr-scanner.svg" alt="">
+                                </div>
+                                <div class="qr-status">
+                                    <div class="qr-status-scroll">
+                                        <div class="qr-list qr-left-1">
+                                            <p>The gradient is made from two color hexcodes that match the numbers of Pi</p>
+                                        </div>
+                                        <div class="qr-list qr-left-2">
+                                            <p>Art is regenerated every 3.14 seconds from 12 digits of Pi</p>
+                                        </div>
+                                        <div class="qr-list qr-left-3">
+                                            <p>Art is regenerated every 3.14 seconds from 12 digits of Pi</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="form-btn" type="submit">Join the dePi Army!</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    
+        <!-- art content section -->
+        <section class="art-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="art-box">
+                            <div class="row">
+                                <div class="col-lg-6 order-2 order-lg-1">
+                                    <div class="art-img">
+                                        <img src="/img/art.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 order-1 order-lg-2">
+                                    <div class="art-content" id="art-content">
+                                        <div class="art-content-anim">
+                                            <h2>3.14 Commendations</h2>
+                                        </div>
+                                        <p>Every year, we invite artists to submit their unique designs for
+                                            consideration as
+                                            our new scannable art. The art with the most votes wins and will be
+                                            installed
+                                            for Pi Day. As part of our Pi Day Celebration, the artist will receive the
+                                            3.14
+                                            ART AWARD and receives the 3.14% of that year’s annual sales .</p>
+                                        <p>Your art continues to mature and diversify year over year.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="art-circle"></div>
+                        <div class="art-dot">
+                            <img src="/img/join.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- nft section -->
+        <section class="nft-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 order-2 order-lg-1">
+                        <div class="nft-card">
+                            <ul>
+                                <li>Regeneration <span class="seqNum">0</span></li>
+                                <li><svg width="19" height="18" viewBox="0 0 19 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M9.63102 1.59378C5.67003 1.59378 2.45901 4.8048 2.45901 8.76579C2.45901 12.7268 5.67003 15.9378 9.63102 15.9378C13.592 15.9378 16.803 12.7268 16.803 8.76579C16.803 4.8048 13.592 1.59378 9.63102 1.59378ZM0.865234 8.76579C0.865234 3.92458 4.78981 0 9.63102 0C14.4722 0 18.3968 3.92458 18.3968 8.76579C18.3968 13.607 14.4722 17.5316 9.63102 17.5316C4.78981 17.5316 0.865234 13.607 0.865234 8.76579Z"
+                                            fill="white" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M9.631 3.18756C10.0711 3.18756 10.4279 3.54434 10.4279 3.98445V8.90268C10.4279 8.90274 10.4279 8.90263 10.4279 8.90268C10.428 9.11395 10.512 9.31671 10.6614 9.46608L12.5852 11.3899C12.8964 11.7011 12.8964 12.2056 12.5852 12.5168C12.2739 12.828 11.7694 12.828 11.4582 12.5168L9.53457 10.5932C9.53454 10.5932 9.5346 10.5933 9.53457 10.5932C9.08626 10.145 8.83424 9.53698 8.83411 8.90302V3.98445C8.83411 3.54434 9.19089 3.18756 9.631 3.18756Z"
+                                            fill="white" />
+                                    </svg>
+                                    <span id="timer">3.14</span>
+                                </li>
+                            </ul>
+                            <div class="nft-card-content">
+                                <div class="nft-head-bg"></div>
+                                <div class="nft-body">
+                                    <div id="qrCodeCanvas"></div>
+                                    <div class="nft-body-content">
+                                        <h2>Pi Digits</h2>
+                                        <p>FROM THE <span class="digitNum"></span>TH DECIMAL OF PI</p>
+                                        <h4 class="colorDigits">820931840573</h4>
+                                        <div class="nft-color">
+                                            <ul>
+                                                <li>
+                                                    <span></span>
+                                                    <p class="color1Digits">#820931</p>
+                                                </li>
+                                                <li>
+                                                    <span></span>
+                                                    <p class="color2Digits">#840573</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 order-1 order-lg-2">
+                        <div class="nft-right-content">
+                            <h2>You become a General when you mint an Infinitely regenerating NFT.</h2>
+                            <ul>
+                                <li>Infinity NFTs regenerate forever</li>
+                                <li>Watch it evolve every 3.14 seconds from 12 new digits of Pi</li>
+                                <li>Your art is always unique, never regenerating with the same digits as your fellow
+                                    members</li>
+                                <li>All the generated scannable art is downloadable and yours forever</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- info card section -->
+        <section class="info-section">
+            <div class="container position-relative">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="info-card">
+                            <img src="/img/info-01.svg">
+                            <h4>Pi Day Celebrations</h4>
+                            <p>Every year on 3.14 we will throw an exclusive members only Pi Day party. There will be
+                                many
+                                celebrations but the VIP events are for ranked Generals with clearance. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="info-card">
+                            <img src="/img/info-02.svg" class="info-img-fix-1">
+                            <h4>Voting Rights</h4>
+                            <p>All soldiers receive voting rights. Generals command what deciding options will be voted
+                                on.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="info-card">
+                            <img src="/img/info-03.svg" class="info-img-fix-2">
+                            <h4>70% Dividends</h4>
+                            <p>After the Infinity NFT sale, and all ranked General are earned, we will open up
+                                recruiting
+                                for anyone to become a soldier. Soldiers choose their favorite set of digits from Pi and
+                                MINT them. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card-dot">
+                    <img src="/img/join.svg">
+                </div>
+            </div>
+        </section>
+    
+        <!-- contact section -->
+        <section class="contact-section" id="enlistForm">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="contact-info">
+                            <h2>Start Your Brigade</h2>
+                            <p>The Infinity NFTs will be available as a limited time-based Open Edition.The date, price
+                                and
+                                rules will be announced soon. </p>
+                            <p>
+                                Every 3 Hours and 14 seconds, we group those who enlist. Earlier groups have the
+                                advantage
+                                of minting sooner and ranking higher.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-form" >
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h4>Enlist Now</h4>
+                                <h4 class="countdown">2 Days 3 Hours 14 Minutes</h4>
+                            </div>
+                            <p>When joining, you will be authenticated through twitter to make signing up simple and
+                                anonymous, we do not request your email from twitter.</p>
+                            <form  action="/enlist" method="post">
+                                @csrf
+                                <div class="form-input">
+                                    <input type="text" name="wallet_id" placeholder="Enter Wallet" required>
+                                </div>
+                                <button class="form-btn" type="submit">Join the dePi Army!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 @endsection
 
 @push('scripts')
@@ -434,4 +425,18 @@
             }, 1000)
         })
     </script>
+    <script>
+        const app = Vue.createApp({
+            created(){
+                @if(session()->get('notRegistered'))
+                    this.$Message.error('You do not have an account yet. Please sign up by enlisting now.');
+                @endif
+                @if(session()->get('twitterError'))
+                this.$Message.error("It seems there's a problem in your twitter acount.");
+                @endif
+            } 
+        });
+        app.use(ViewUIPlus);
+        app.mount("#app");
+  </script>
 @endpush

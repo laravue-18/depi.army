@@ -18,6 +18,13 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/tailwind.min.css">
+    
+    <!-- import Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- import stylesheet -->
+    <link rel="stylesheet" href="https://unpkg.com/view-ui-plus/dist/styles/viewuiplus.css">
+    <!-- import View UI Plus -->
+    <script src="https://unpkg.com/view-ui-plus"></script>
 
     @stack('css')
 </head>

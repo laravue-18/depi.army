@@ -127,7 +127,7 @@
             <img src="/img/tweet.png">
             <template v-if="user.tweet">
                 <div >
-                    <h1 class="text-white">Tweet Posted Successfully</h1>
+                    <h1 class="text-white" >Tweet Posted Successfully</h1>
                     <a class="text-white" :href="'https://twitter.com/' + user.username + '/status/' + user.tweet" target="_blank">@{{ 'https://twitter.com/' + user.username + '/status/' + user.tweet }}</a>
                 </div>
             </template>
